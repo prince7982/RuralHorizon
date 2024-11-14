@@ -46,10 +46,12 @@ const toggleFormLink = document.getElementById('toggleFormLink');
 const formTitle = document.getElementById('formTitle');
 const signupForm = document.getElementById('signupForm');
 const signinForm = document.getElementById('signinForm');
+const toggleParagraph = toggleFormLink.parentElement; // Selects the parent paragraph of the toggle link
 
 // Show popup on button click
 loginBtn.addEventListener('click', () => {
     popup.style.display = 'flex';
+    showSignUpForm(); // Show Sign Up form by default
 });
 
 // Close popup when close button is clicked
@@ -59,29 +61,41 @@ closeBtn.addEventListener('click', () => {
 
 // Close popup when clicking outside of it
 window.addEventListener('click', (event) => {
-    if (event.target == popup) {
+    if (event.target === popup) {
         popup.style.display = 'none';
     }
 });
 
-// Toggle between Sign Up and Sign In forms
-toggleFormLink.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent the link from refreshing the page
-    if (signupForm.style.display === 'none') {
-        // Switch to Sign Up
-        signupForm.style.display = 'block';
-        signinForm.style.display = 'none';
-        formTitle.textContent = 'Sign Up';
-        toggleFormLink.textContent = 'Sign in';
-        toggleFormLink.previousElementSibling.textContent = 'Create an account';
-        toggleFormLink.nextElementSibling.textContent = 'Register with Google';
-    } else {
-        // Switch to Sign In
-        signupForm.style.display = 'none';
-        signinForm.style.display = 'block';
-        formTitle.textContent = 'Sign In';
-        toggleFormLink.textContent = 'Sign up';
-        toggleFormLink.previousElementSibling.textContent = 'New to Rural Horizon?';
-        toggleFormLink.nextElementSibling.textContent = 'Sign in with Google';
-    }
-});
+// Function to display Sign Up form
+function showSignUpForm() {
+    signupForm.style.display = 'block';
+    signinForm.style.display = 'none';
+    formTitle.textContent = 'Sign Up';
+    toggleParagraph.innerHTML = 'Already have an account <a href="#" id="toggleFormLink">Sign in</a>'; // Update paragraph for Sign Up form
+    updateToggleLink(); // Ensure the event listener is re-attached
+}
+
+// Function to display Sign In form
+function showSignInForm() {
+    signupForm.style.display = 'none';
+    signinForm.style.display = 'block';
+    formTitle.textContent = 'Sign In';
+    toggleParagraph.innerHTML = 'Don\'t have an account? <a href="#" id="toggleFormLink">Sign up</a>'; // Update paragraph for Sign In form
+    updateToggleLink(); // Ensure the event listener is re-attached
+}
+
+// Function to re-attach event listener to the updated toggle link
+function updateToggleLink() {
+    const newToggleFormLink = document.getElementById('toggleFormLink');
+    newToggleFormLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (signupForm.style.display === 'none') {
+            showSignUpForm();
+        } else {
+            showSignInForm();
+        }
+    });
+}
+
+// Initialize with the updated event listener
+updateToggleLink();

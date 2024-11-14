@@ -162,7 +162,8 @@
     justify-content: center;
     align-items: flex-start;
 }
-.left-section img{
+
+.left-section img {
     height: 15rem;
     width: 15rem;
 }
@@ -223,15 +224,17 @@
 }
 
 .right-section input {
-    padding: 10px;
-    margin: 5px 0 15px 0;
+    /* padding: 10px; */
+    padding: 10px 90px 10px 10px;
+    margin: 5px 20px 15px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
 }
 
 .right-section button {
-    padding: 10px;
+    /* padding: 10px; */
+    padding: 10px 120px 10px 120px;
     background-color: #000;
     color: #fff;
     border: none;
@@ -274,22 +277,43 @@
     cursor: pointer;
 }
 
-/* Responsive adjustments */
+
+/* Reset Password link styling */
+.reset-password-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.reset-password-link {
+    font-size: 14px;
+    color: #6c757d; /* Customize color as desired */
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.reset-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for tablets and below */
 @media (max-width: 768px) {
     .popup-content {
         flex-direction: column;
         max-width: 90%;
         padding: 10px;
     }
-    .popup{
+    .popup {
         height: 100%;
     }
-    .left-section img{
+    .left-section img {
         height: 11rem;
         width: 11rem;
     }
     
-    .left-section, .right-section {
+    .left-section,
+    .right-section {
         width: 100%;
         padding: 10px;
     }
@@ -299,18 +323,19 @@
         text-align: center;
         margin: -2.5rem 0;
     }
-    .left-section ul li{
-        display: none;
-    }
-    .left-section p{
-        display: none;
+
+    .left-section ul li,
+    .left-section p {
+        display: none; /* Hide list and paragraph on smaller screens */
     }
 
     .right-section h2 {
         font-size: 22px;
     }
 
-    .right-section input, .right-section button, .google-btn {
+    .right-section input,
+    .right-section button,
+    .google-btn {
         width: 100%;
         font-size: 16px;
     }
@@ -321,35 +346,35 @@
     }
 }
 
+/* Additional adjustments for smaller mobile screens */
 @media (max-width: 480px) {
     .popup-content {
         padding: 5px;
     }
-    .popup{
+    .popup {
         height: 100%;
         margin-top: 1rem;
     }
-    .left-section{
+    .left-section {
         margin: -2.5rem 0;
     }
-    .left-section h2, .right-section h2 {
+    .left-section h2,
+    .right-section h2 {
         font-size: 20px;
     }
-    .left-section ul li{
-        display: none;
-    }
-    .left-section p{
-        display: none;
-    }
     
-    .left-section p, .left-section li, .right-section p {
-        font-size: 12px;
+    .left-section ul li,
+    .left-section p {
+        display: none; /* Hide for smaller mobile screens */
     }
-    
-    .right-section input, .right-section button, .google-btn {
+
+    .right-section input,
+    .right-section button,
+    .google-btn {
         font-size: 14px;
     }
 }
+
                 /* ------------------login form close -------------------- */
   
   /* Slider */
@@ -404,10 +429,10 @@
     font-weight: 500;
     color: #fff;
     transition: 0.2s ease;
+    cursor: pointer;
   }
   .slider-btn1:hover{
-    border: 3px solid #2398bf;
-    background: none;
+    background: #155d75;
   }
   .slider-btn2{
     background: #007200;
@@ -419,10 +444,10 @@
     font-weight: 500;
     color: #fff;
     transition: 0.2s ease;
+    cursor: pointer;
   }
   .slider-btn2:hover{
-    border: 3px solid #007200;
-    background: none;
+    background: #024802;
   }
   .slider-btn3{
     background: #444389;
@@ -434,10 +459,10 @@
     font-weight: 500;
     color: #fff;
     transition: 0.2s ease;
+    cursor: pointer;
   }
   .slider-btn3:hover{
-    border: 3px solid #444389;
-    background: none;
+    background: #2826a0;
   }
   
   /* Dots for Slider */
