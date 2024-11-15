@@ -46,7 +46,8 @@ const toggleFormLink = document.getElementById('toggleFormLink');
 const formTitle = document.getElementById('formTitle');
 const signupForm = document.getElementById('signupForm');
 const signinForm = document.getElementById('signinForm');
-const toggleParagraph = toggleFormLink.parentElement; // Selects the parent paragraph of the toggle link
+const resetPasswordForm = document.getElementById('resetPasswordForm'); // New Reset Password form
+const resetPasswordLink = document.querySelector('.reset-password-link'); // Link for Reset Password
 
 // Show popup on button click
 loginBtn.addEventListener('click', () => {
@@ -70,32 +71,51 @@ window.addEventListener('click', (event) => {
 function showSignUpForm() {
     signupForm.style.display = 'block';
     signinForm.style.display = 'none';
+    resetPasswordForm.style.display = 'none'; // Hide Reset Password form
     formTitle.textContent = 'Sign Up';
-    toggleParagraph.innerHTML = 'Already have an account <a href="#" id="toggleFormLink">Sign in</a>'; // Update paragraph for Sign Up form
-    updateToggleLink(); // Ensure the event listener is re-attached
+    toggleFormLink.textContent = 'Sign in';
+    toggleFormLink.previousElementSibling.textContent = "Already have an account?";
 }
 
 // Function to display Sign In form
 function showSignInForm() {
     signupForm.style.display = 'none';
     signinForm.style.display = 'block';
+    resetPasswordForm.style.display = 'none'; // Hide Reset Password form
     formTitle.textContent = 'Sign In';
-    toggleParagraph.innerHTML = 'Don\'t have an account? <a href="#" id="toggleFormLink">Sign up</a>'; // Update paragraph for Sign In form
-    updateToggleLink(); // Ensure the event listener is re-attached
+    toggleFormLink.textContent = 'Sign up';
+    toggleFormLink.previousElementSibling.textContent = "Don't have an account?";
 }
 
-// Function to re-attach event listener to the updated toggle link
-function updateToggleLink() {
-    const newToggleFormLink = document.getElementById('toggleFormLink');
-    newToggleFormLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        if (signupForm.style.display === 'none') {
-            showSignUpForm();
-        } else {
-            showSignInForm();
-        }
-    });
+// Function to display Reset Password form
+function showResetPasswordForm() {
+    signupForm.style.display = 'none'; // Hide Sign Up form
+    signinForm.style.display = 'none'; // Hide Sign In form
+    resetPasswordForm.style.display = 'block'; // Show Reset Password form
+    formTitle.textContent = 'Reset Password'; // Update form title
 }
 
-// Initialize with the updated event listener
-updateToggleLink();
+// Toggle between Sign Up and Sign In forms when the link is clicked
+toggleFormLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent link from refreshing the page
+    if (signupForm.style.display === 'none') {
+        showSignUpForm();
+    } else if (signinForm.style.display === 'none') {
+        showSignInForm();
+    }else if(resetPasswordForm.style.display === 'none'){
+        showSignUpForm();
+    }
+});
+
+// Show Reset Password form when the reset password link is clicked
+resetPasswordLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default link behavior
+    showResetPasswordForm();
+});
+
+// Optional: Function to go back to Sign In from Reset Password
+function showSignInFormFromReset() {
+    resetPasswordForm.style.display = 'none'; // Hide Reset Password form
+    signinForm.style.display = 'block'; // Show Sign In form
+    formTitle.textContent = 'Sign In'; // Update the form title
+}
