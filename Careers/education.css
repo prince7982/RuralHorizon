@@ -1,0 +1,369 @@
+/* Modern Color Palette for Education */
+:root {
+    --primary: #4f46e5; /* Retaining primary color, still fits education */
+    --primary-dark: #4338ca;
+    --secondary: #3b82f6; /* Blue as a calm, educational color */
+    --accent: #8b5cf6;
+    --bg-light: #f8fafc;
+    --text-dark: #1f2937; /* Dark text for readability */
+    --text-light: #6b7280; /* Lighter text for less important elements */
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 8rem 0;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.section-header i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-right: 1rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Overview Section */
+.overview-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.overview-section p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* Specializations Grid */
+.specializations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.specialization-card {
+    background: whitesmoke;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.specialization-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-header i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.card-content h4 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.card-content ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.card-content ul li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+}
+
+.card-content ul li::before {
+    content: "→";
+    color: var(--primary);
+    margin-right: 0.5rem;
+}
+
+.salary-range {
+    background: var(--bg-light);
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.salary-range .label {
+    color: var(--text-light);
+}
+
+.salary-range .value {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Education Section */
+.education-section {
+    margin: 4rem 0;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.education-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.education-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.education-card ul {
+    list-style: none;
+}
+
+.education-card ul li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+}
+
+/* Opportunities Section */
+.opportunities-section {
+    margin: 4rem 0;
+}
+
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.opportunity-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.opportunity-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.opportunity-card ul {
+    list-style: none;
+}
+
+.opportunity-card ul li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 6rem 0;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .specializations-grid,
+    .education-grid,
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-header i {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .card-header {
+        padding: 1.5rem;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+}
+
+/* General Styles for Specializations Detail */
+.specializations-detail {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+ .specialization-detail {
+    color:rgb(10, 70, 130);
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+} 
+
+.specialization-detail h3 {
+    color: rgb(59, 59, 171);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.specialization-detail p {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .specialization-detail {
+        padding: 15px;
+    }
+
+    .specialization-detail h3 {
+        font-size: 1.3rem;
+    }
+
+    .specialization-detail p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive Design for Tablets and Medium Screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .specialization-detail {
+        padding: 18px;
+    }
+
+    .specialization-detail h3 {
+        font-size: 1.4rem;
+    }
+
+    .specialization-detail p {
+        font-size: 1rem;
+    }
+}
+
+/* Grid Layout for Large Screens */
+@media (min-width: 1025px) {
+    .specializations-detail {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .specialization-detail {
+        padding: 20px;
+    }
+
+    .specialization-detail h3 {
+        font-size: 1.6rem;
+    }
+
+    .specialization-detail p {
+        font-size: 1.1rem;
+    }
+}

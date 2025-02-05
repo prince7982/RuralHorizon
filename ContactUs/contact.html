@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Rural Horizon</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle-container">
+        <button id="theme-toggle">🌙</button>
+    </div>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+
+            <div class="contact-info">
+                <h3>Our Details</h3>
+                <p><strong>Email:</strong> support@ruralhorizon.com</p>
+                <p><strong>Phone:</strong> +91 123 456 7890</p>
+                <p><strong>Address:</strong> Rural Horizon, Main Street, Rural City, India</p>
+
+                <div class="social-media">
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Twitter</a>
+                    <a href="#" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Integration -->
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

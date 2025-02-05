@@ -1,0 +1,86 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+
+/* Parallax Section */
+.parallax-section {
+    background-image: url('assets/background3.jpg');
+    height: 400px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+.parallax-section h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.parallax-section p {
+    font-size: 1.2rem;
+}
+
+/* Career Section */
+.career-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.stream {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stream img {
+    width: 38%;
+    height: 60%;
+}
+
+.text-content {
+    padding: 20px;
+    width: 60%;
+   
+}
+
+.text-content h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stream {
+        flex-direction: column;
+    }
+
+    .stream img {
+        width: 100%;
+    }
+
+    .text-content {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -120,3 +120,52 @@ resetPasswordLink.addEventListener('click', (event) => {
     showResetPasswordForm();
 });
 
+function toggleDarkMode() {
+    const body = document.body;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+  
+    // Toggle dark mode class
+    if (body.classList.contains('dark-mode')) {
+      body.classList.remove('dark-mode');
+      darkModeToggle.innerHTML = '🌙'; 
+      localStorage.setItem('theme', 'light'); // Save light mode in localStorage
+    } else {
+      body.classList.add('dark-mode');
+      darkModeToggle.innerHTML = '🌞';
+      localStorage.setItem('theme', 'dark'); // Save dark mode in localStorage
+    }
+  }
+  
+  // Apply the saved theme on page load
+  window.onload = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('darkModeToggle').innerHTML = '🌞';
+    }
+  };
+
+  // loader 
+
+  // Show loader for a few seconds
+function showLoader() {
+  const loader = document.getElementById('loader');
+  loader.classList.add('visible');
+  setTimeout(() => {
+    loader.classList.remove('visible');
+  }, 2000); // Adjust the timeout duration as needed (in milliseconds)
+}
+
+// Add event listeners to navigation links
+document.querySelectorAll('.navbar-links a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    showLoader();
+    const targetUrl = e.target.getAttribute('href');
+    setTimeout(() => {
+      if (targetUrl !== '#') {
+        window.location.href = targetUrl; // Navigate to the target after loader
+      }
+    }, 2000); // Match the timeout duration
+  });
+});

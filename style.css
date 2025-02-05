@@ -5,7 +5,7 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
   }
-  
+
   /* Navbar */
   .navbar {
     display: flex;
@@ -112,6 +112,16 @@
     .hamburger {
       display: block;
     }
+    #darkModeToggle{
+      margin-top: 0.8rem;
+      /* margin-left: 0.8rem; */
+    }
+  }
+
+  #darkModeToggle{
+    border: none;
+    background: none;
+    transform: scale(2);
   }
   
 
@@ -218,15 +228,16 @@
 }
 
 .right-section label {
-    font-size: 14px;
+    font-size: 16px;
     color: #333;
     margin-bottom: 5px;
+    line-height: 1rem;
+    margin-top: -10px;
 }
 
 .right-section input {
-    /* padding: 10px; */
     padding: 10px 90px 10px 10px;
-    margin: 5px 0 15px 0;
+    margin: 5px 0 8px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
@@ -375,6 +386,7 @@
     }
 }
 
+
                 /* ------------------login form close -------------------- */
   
   /* Slider */
@@ -414,10 +426,12 @@
   .caption h1 {
     font-size: 2.5rem;
     font-weight: bold;
+    color: #fff;
   }
   
   .caption p {
     font-size: 1.2rem;
+    font-weight: 300;
   }
   .slider-btn1{
     background: #2398bf;
@@ -710,11 +724,13 @@
 /* Container */
 .container-sec2 {
     max-width: 1200px;
+    background-color:whitesmoke;
     margin: 0 auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    
 }
 
 /* Course Section */
@@ -985,6 +1001,7 @@
 
 .footer-bottom p {
     margin: 5px 0;
+    color: #d1d1d1;
 }
 .footer-bottom p a{
     text-decoration: none;
@@ -1017,3 +1034,351 @@
         margin-top: 10px;
     }
 }
+
+/* pagess */
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   /* background-color: cadetblue; */
+    color: hsl(0, 9%, 65%);
+  }
+  
+  .containers {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #032d57;
+  }
+  
+  p {
+    font-size: 1.2em;
+    color: #012224;
+  }
+
+  .cards1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+  .card1 {
+    background-color: rgb(214, 218, 226);
+    border: 1px solid #a0b8e5;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(70, 3, 3, 0.1);
+    max-width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .card1 img {
+    max-width: 265px;
+    margin-bottom: 15px;
+  }
+  
+  .card1 h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #02396f;
+  }
+  
+  .card1 p {
+    font-size: 1em;
+    color: #7f8c8d;
+  }
+  
+  .card1:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .cards1 {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  /* Parallax Section */
+.parallax-section {
+    background-image: url('assets/images8.jpg');
+    height: 400px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+.parallax-section h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.parallax-section p {
+    font-size: 1rem;
+}
+
+.parallax-section-2 {
+  background-image: url('assets/parallex3.jpg');
+  height: 400px;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+/*  Why choose rural horizon */
+
+/* Container for Why Choose Rural Horizon section */
+.container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px 20px 20px;
+    background-color: #f9f9f9;
+    /* border: 1px solid #ddd; */
+    margin: 20px 0;
+    box-sizing: border-box;
+    gap: 10px;
+    line-height: 1;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  }
+  
+  /* Styling for the main section content on the left */
+  .sec2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+    width: 50%; /* Take up 60% of the container width */
+    box-sizing: border-box;
+    min-width: 300px; /* Ensures a minimum width for smaller screens */
+  }
+  
+  /* Headline styling */
+  .sec2 .section2 h1 {
+    font-size: 2em;
+    color: #333;
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  
+  /* Section text styling */
+  .sec2 .section2 p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #555;
+    margin: 10px 0;
+    text-align: left;
+    padding: 0 10px;
+  }
+  
+  /* Button styling */
+  .sec2 .section2 button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .sec2 .section2 button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Image grid container on the right */
+  .sections2 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; /* Allows images to wrap into rows */
+    gap: 5px; /* Gap between images */
+    /* width: 35%; Take up 35% of the container width */
+    box-sizing: border-box;
+    min-width: 00px; /* Ensures a minimum width for smaller screens */
+    /* justify-content: flex-start; Align items to the left */
+  }
+  
+  /* Styling for the image containers */
+  .sections2 img {
+    width: 180px; /* Fixed width for each image */
+    height: 180px; /* Fixed height for each image */
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    /* Adjust for tablets and medium-sized screens */
+    .container2 {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    /* Adjust text and images for medium-sized screens */
+    .sec2 {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .sec2 .section2 h1 {
+      font-size: 1.8em;
+      text-align: center;
+    }
+  
+    .sec2 .section2 p {
+      font-size: 1em;
+      text-align: center;
+    }
+  
+    .sections2 {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Stack content vertically on smaller screens */
+    .container2 {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .sec2, .sections2 {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .sec2 .section2 h1, .sec2 .section2 p {
+      text-align: center;
+    }
+  
+    /* Adjust button size */
+    .sec2 .section2 button {
+      padding: 8px 16px;
+      font-size: 0.9em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Further adjustments for small mobile screens */
+    .sec2 .section2 h1 {
+      font-size: 1.6em;
+    }
+  
+    .sec2 .section2 p {
+      font-size: 0.9em;
+    }
+  
+    /* Adjust image size for small screens */
+    .sections2 img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  /* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212; /* Dark background */
+  color: white; /* Light text */
+}
+
+/* Specific Dark Mode styling for elements */
+.dark-mode .navbar {
+  background-color: #333; /* Dark navbar */
+}
+
+.dark-mode .navbar-links a {
+  color: white; /* Light text for navbar links */
+}
+
+.dark-mode .card {
+  background-color: #333; /* Dark background for cards */
+  color: white; /* Light text in cards */
+}
+
+/* Additional styling for other elements */
+.dark-mode .slider {
+  filter: brightness(0.7); /* Dim the image slider in dark mode */
+}
+
+.dark-mode .streamcard-img img {
+  filter: brightness(0.7); /* Dim the stream images in dark mode */
+}
+
+/* Customize buttons for dark mode */
+.dark-mode button {
+  background-color:#121212; /* Darker buttons */
+  color: white;
+  
+}
+
+/* loader */
+
+/* Loader styles */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  visibility: hidden; /* Initially hidden */
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.loader.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

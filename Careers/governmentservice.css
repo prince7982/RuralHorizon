@@ -1,0 +1,269 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #1e2a3a;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header i {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #340ece;
+    font-weight: 600;
+}
+
+/* Specialization Cards */
+.specializations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.specialization-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.specialization-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-header i {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+.card-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.card-content ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.card-content ul li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.salary-range {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #007bff;
+}
+
+/* Specialization Detail */
+.specialization-detail {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.specialization-detail h3 {
+    color: #431ce0;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.specialization-detail p {
+    line-height: 1.7;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Education Section */
+.education-section .education-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.education-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.education-card h3 {
+    color: #431ce0;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.education-card ul {
+    list-style-type: none;
+}
+
+.education-card ul li {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+/* Opportunities Section */
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.opportunity-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.opportunity-card h3 {
+    color: #431ce0;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.opportunity-card ul {
+    list-style-type: none;
+}
+
+.opportunity-card ul li {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+/* Responsive Styles */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .specializations-grid,
+    .education-grid,
+    .opportunities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .specialization-card,
+    .education-card,
+    .opportunity-card {
+        padding: 15px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .card-content ul li {
+        font-size: 0.95rem;
+    }
+
+    .salary-range {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .specializations-grid,
+    .education-grid,
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .specialization-card,
+    .education-card,
+    .opportunity-card {
+        padding: 10px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .card-content ul li {
+        font-size: 0.9rem;
+    }
+
+    .salary-range {
+        font-size: 1rem;
+    }
+
+    .specialization-detail h3 {
+        font-size: 1.5rem;
+    }
+
+    .specialization-detail p {
+        font-size: 0.95rem;
+    }
+}

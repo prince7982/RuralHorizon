@@ -1,0 +1,254 @@
+/* Modern Color Palette */
+:root {
+    --tech-gradient: linear-gradient(135deg, #4f46e5, #2563eb);
+    --health-gradient: linear-gradient(135deg, #059669, #10b981);
+    --edu-gradient: linear-gradient(135deg, #ea580c, #f97316);
+    --eng-gradient: linear-gradient(135deg, #0284c7, #38bdf8);
+    --gov-gradient: linear-gradient(135deg, #7c3aed, #8b5cf6);
+    --agri-gradient: linear-gradient(135deg, #65a30d, #84cc16);
+    --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Parallax Background */
+body::before {
+    content: '';
+    background-image: url('assets/HEALTHCARE.webp'); /* Add your parallax image */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.8);
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    background: #f8fafc;
+    color: #1f2937;
+}
+
+/* Container & Section Styles */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.career-section {
+    padding: 4rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.section-desc {
+    font-size: 1.25rem;
+    color: #4b5563;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Career Grid */
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+/* Career Cards */
+.career-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+}
+
+.career-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Card Icons */
+.card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+/* Career Type Specific Styles */
+.tech .card-icon { background: var(--tech-gradient); }
+.health .card-icon { background: var(--health-gradient); }
+.edu .card-icon { background: var(--edu-gradient); }
+.eng .card-icon { background: var(--eng-gradient); }
+.gov .card-icon { background: var(--gov-gradient); }
+.agri .card-icon { background: var(--agri-gradient); }
+
+/* Card Content */
+.career-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.card-desc {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Card Details */
+.card-details {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.roles, .education {
+    margin-bottom: 1rem;
+}
+
+.roles h4, .education h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.roles ul {
+    list-style: none;
+}
+
+.roles ul li {
+    color: #4b5563;
+    padding: 0.25rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.roles ul li::before {
+    content: "•";
+    color: #6366f1;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.education p {
+    color: #4b5563;
+}
+
+/* Explore Button */
+.explore-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.explore-btn i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.explore-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Button Colors */
+.tech .explore-btn { background: var(--tech-gradient); }
+.health .explore-btn { background: var(--health-gradient); }
+.edu .explore-btn { background: var(--edu-gradient); }
+.eng .explore-btn { background: var(--eng-gradient); }
+.gov .explore-btn { background: var(--gov-gradient); }
+.agri .explore-btn { background: var(--agri-gradient); }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .career-grid {
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .career-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .career-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-desc {
+        font-size: 1.1rem;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-icon i {
+        font-size: 1.5rem;
+    }
+
+    .career-card h3 {
+        font-size: 1.5rem;
+    }
+}
