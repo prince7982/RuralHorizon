@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrance Exam</title>
     <link rel="stylesheet" href="government.css">
+    <link rel="stylesheet" href="../navbar.css">
 </head>
 <body>
+    <div id="navbar-container"></div> <!-- Navbar will be loaded dynamically -->
      
     <!-- loader -->
 
   <div id="loader" class="loader">
     <div class="spinner"></div>
   </div>
-  
-    <!-- Parallax Header Section -->
-    <div class="parallax-header">
-        <h1 style="text-align: center ;">Government/Private Entrance Exam</h1>
-        <p style="text-align: center;">Prepare for your future with the right resources and exams</p>
-    </div>
+  <!-- Parallax Header Section -->
+  <div class="parallax-header">
+    <h1>Government / Private Entrance Exam</h1>
+    <p>Prepare for your future with the right resources and exams</p>
+  </div><br>
 
-    <!-- Program Cards Section -->
-    <div class="container">
+  <!-- Program Cards Section -->
+  <div class="container">
+
         <div class="program-cards">
             <div class="program-card">
                 <img src="assets/school.jpg" alt="Program 1">
@@ -83,8 +85,8 @@
 
     <!-- Latest Job Online Form -->
     <div>
-        <h1 style="text-align: center;">Latest Admission Job Form</h1>
-        <div class="container">
+        <h1 class="latestjob">Latest Admission Job Form</h1>
+        <div class="latestjob-container">
             <ul>
                 <li><a href="https://www.sarkariresult.com/2025/nta-cmat/" target="_blank">NTA CMAT 2025 Online Form</a></li>
                 <li><a href="https://www.sarkariresult.com/2025/nvs-class-9th/" target="_blank">NVS Class 9th Admissions Online Form 2025</a></li>
@@ -94,10 +96,13 @@
         </div>
     </div>
 
-    <!-- <script>
+    <script>
         function enroll(programName) {
             alert('You have enrolled in ' + programName + '!');
         }
-    </script> -->
+    </script>
+
+<div id="footer-container"></div> <!-- Footer will be loaded dynamically -->
+<script src="../navbar.js"></script> <!-- Dynamic path handling -->
 </body>
 </html>

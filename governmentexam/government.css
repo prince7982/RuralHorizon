@@ -11,138 +11,29 @@ body {
     overflow-x: hidden;
 }
 
+.parallax-header{
+    background: #fff;
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 10px 10px 20px #514f4f, -10px -10px 20px #7b6645;
+    background: linear-gradient(145deg, #b88b47, #e6e6e6);
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1;
+}
+
+.parallax-header h1{
+    text-align: center;
+}
+.parallax-header p{
+    text-align: center;
+    padding: 0 5px;
+}
+
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 7rem auto;
     padding: 0 20px;
-}
-
-/* Footer Column Styling */
-.footer-column img{
-    height: 11rem;
-    width: 13rem;
-    margin-bottom: 2.5rem;
-}
-
-.footer-column {
-    flex: 1;
-    min-width: 250px;
-    margin-top: 1rem;
-}
-
-.footer-column h3 {
-    font-size: 25px;
-    color: #ffffff;
-    margin-bottom: 15px;
-}
-
-/* Contact Section Styling */
-.footer-column p {
-    display: flex;
-    align-items: center;
-    color: #d1d1d1;
-    margin: 8px 0;
-    line-height: 1.5rem;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.footer-contact{
-    text-decoration: none;
-    color: #d1d1d1;
-    transition: 0.2s ease;
-}
-
-.footer-contact:hover{
-    color: #ffbe0b;
-}
-.footer-contact.mail:hover{
-    color: #d62828;
-}
-
-.footer-column p i {
-    margin-right: 10px;
-}
-
-/* Social Icons Styling */
-.social-icons i {
-    background-color: #142850;
-    color: #ffffff;
-    margin-top: 20px;
-    margin-right: 10px;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.2s ease;
-}
-
-.social-icons i:hover{
-    transform: scale(1.1);
-}
-
-.social-icons i.fa-facebook-f{
-    color: #1877F2;
-}
-
-.social-icons i.fa-facebook-f:hover{
-    color: #d1d1d1;
-    background-color: #1877F2;
-}
-
-.social-icons i.fa-twitter{
-    color: #1DA1F2;
-}
-
-.social-icons i.fa-twitter:hover{
-    color: #d1d1d1;
-    background-color: #1DA1F2;
-}
-
-.social-icons i.fa-instagram{
-    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
-}
-
-.social-icons i.fa-google-plus-g{
-    background: #DB4437;
-}
-
-.social-icons i.fa-linkedin-in{
-    background: #0077B5;
-}
-
-/* Links Styling */
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-column ul li {
-    margin: 8px 0;
-}
-
-.footer-column ul li a{
-    text-decoration: none;
-    color: #d1d1d1;
-    transition: 0.1s ease;
-}
-
-.footer-column ul li a:hover{
-    color: #ffb703;
-}
-
-/* Header */
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.header h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Parallax Background */
@@ -169,11 +60,12 @@ body::before {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 100px;
 }
 
 .program-card {
     background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
     width: 30%;  /* 3 cards per row */
     margin: 15px;
@@ -192,7 +84,7 @@ body::before {
 .program-card img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-bottom: 15px;
 }
 
@@ -235,10 +127,17 @@ body::before {
 }
 
 /* Latest Job Online Form */
-.container ul {
+
+.latestjob{
+    text-align: center;
+    color: #fff;
+    font-weight: bolder;
+}
+
+.latestjob-container ul {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 20px auto;
     width: 80%;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
@@ -246,24 +145,24 @@ body::before {
     overflow: hidden;
 }
 
-.container ul li {
+.latestjob-container ul li {
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
     font-size: 16px;
     text-align: left;
 }
 
-.container ul li:last-child {
+.latestjob-container ul li:last-child {
     border: none;
 }
 
-.container ul li a {
+.latestjob-container ul li a {
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.container ul li a:hover {
+.latestjob-container ul li a:hover {
     color: #0056b3;
 }
 
@@ -277,10 +176,6 @@ body::before {
     .program-card {
         width: 90%;
     }
-
-    .header h1 {
-        font-size: 32px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -292,24 +187,25 @@ body::before {
         font-size: 14px;
         padding: 10px 16px;
     }
-
-    .header h1 {
-        font-size: 28px;
-    }
 }
 
 @media (max-width: 480px) {
     .program-card {
         width: 100%;
-        margin: 10px;
+        /* margin: 10px; */
+        margin: auto;
+        margin-bottom: 35px;
     }
 
     .container ul {
         width: 95%;
     }
 
-    .header h1 {
-        font-size: 24px;
+    .parallax-header h1{
+        font-size: 20px;
+    }
+    .parallax-header p{
+        font-size: 12px;
     }
 }
 

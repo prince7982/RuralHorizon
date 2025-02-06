@@ -389,6 +389,9 @@
 
                 /* ------------------login form close -------------------- */
   
+
+
+
   /* Slider */
   .slider {
     position: relative;
@@ -736,7 +739,7 @@
 /* Course Section */
 .course-section {
     /* padding: 40px 0; */
-    margin-top: 3rem;
+    margin: 3rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1311,11 +1314,21 @@ body {
 
 /* Specific Dark Mode styling for elements */
 .dark-mode .navbar {
-  background-color: #333; /* Dark navbar */
+  background-color: #1d1d1d; /* Dark navbar */
+}
+
+.dark-mode .hamburger{
+  color: #fff;
+  background: none;
+}
+
+.dark-mode .navbar-links{
+  background: #1d1d1d;
+  /* color: #fff; */
 }
 
 .dark-mode .navbar-links a {
-  color: white; /* Light text for navbar links */
+  color: #fff; /* Light text for navbar links */
 }
 
 .dark-mode .card {

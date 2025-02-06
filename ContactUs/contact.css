@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.dark-mode .contact-container{
+    color: #333;
+}
+
 /* Default (Light Mode) Styles */
 body {
     font-family: Arial, sans-serif;
@@ -55,7 +59,7 @@ textarea {
     height: 150px;
 }
 
-button {
+.form-group button {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
@@ -65,7 +69,7 @@ button {
     font-size: 16px;
 }
 
-button:hover {
+.form-group button:hover {
     background-color: #218838;
 }
 
@@ -94,54 +98,10 @@ button:hover {
     height: 300px;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #181818;
-    color: #f9f9f9;
-}
-
-.contact-container.dark-mode {
-    background-color: #2a2a2a;
-    color: #f9f9f9;
-}
-
-.contact-section.dark-mode {
-    color: #f9f9f9;
-}
-
-button.dark-mode {
-    background-color: #3e8e41;
-}
-
-button.dark-mode:hover {
-    background-color: #2c6c31;
-}
-
-/* Dark Mode Toggle Button */
-.theme-toggle-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-#theme-toggle {
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #333;
-    transition: color 0.3s;
-}
-
-#theme-toggle.dark-mode {
-    color: #f9f9f9;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .contact-container {
-        width: 90%;
+        width: 100%;
     }
 
     .contact-info {
@@ -174,3 +134,6 @@ button.dark-mode:hover {
         font-size: 14px;
     }
 }
+
+
+

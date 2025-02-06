@@ -183,14 +183,6 @@ a {
     padding-left: 20px;
 }
 
-/* Footer */
-.footer {
-    background-color: #1a472a;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .container {
@@ -244,9 +236,5 @@ a {
     .specialization-card, .education-card, .opportunity-card {
         padding: 10px;
         margin-bottom: 15px;
-    }
-
-    .footer p {
-        font-size: 0.9em;
     }
 }

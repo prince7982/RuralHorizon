@@ -51,6 +51,7 @@ body {
     width: 40%;
     height: auto;
     object-fit: cover;
+    padding:0 20px;
 }
 
 .text-content {
@@ -109,5 +110,18 @@ footer {
     .text-content {
         width: 100%;
         text-align: center;
+    }
+
+    .text-content h2{
+        padding: 0 10px;
+    }
+    .text-content p{
+        text-align: justify;
+        padding: 0 15px;
+    }
+    .text-content ul li{
+        text-align: left;
+        padding: 0 10px 0 0;
+        margin: 0 0 0 10px;
     }
 }

@@ -11,401 +11,410 @@
   <script src="script.js" defer></script>
 </head>
 
-<div>
-  <!-- loader -->
+<body>
+    <!-- loader -->
 
-  <div id="loader" class="loader">
-    <div class="spinner"></div>
-  </div>
-  
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar-brand"><img src="assets/logo1.png" alt="logo"></div>
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <ul class="navbar-links">
-      <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
-      <!-- <li><a href="#"><i class="fas fa-graduation-cap"></i>Streams</a></li> -->
-      <li><a href="Resourses/resource.html"><i class="fas fa-book"></i>Resourses</a></li>
-      <li><a href="Careers/careers.html"><i class="fas fa-users"></i>Careers</a></li>
-      <li><a href="governmentexam/government.html"><i class="fas fa-cogs"></i>Govt Exams and Schemes</a></li>
-      <li><a href="ContactUs/contact.html"><i class="fas fa-phone"></i>Contact Us</a></li>
-      <li><a href="#" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a></li>
-      <!-- Add this to your Navbar for Dark Mode toggle -->
-      <li><button id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- ----------login page ------------------------>
-  <!-- Login Popup -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span class="close-btn">&times;</span>
-      <div class="left-section">
-        <img src="assets/logo2.png" alt="">
-        <!-- <h2>Rural Horizon</h2> -->
-        <!-- <p><i>Shaping tomorrow career's today</i></p> -->
-        <p>By signing up, you can avail of lots of benefits:</p>
-        <ul>
-          <li>Career guidance after 10th and 12th.</li>
-          <li>Govenment exams and schemes.</li>
-          <li>Quizzes for Brushup your Knowledge.</li>
-          <li>Find top universities/colleges.</li>
-          <li>Connect with expert instructors.</li>
-        </ul>
-      </div>
-      <div class="right-section">
-        <h2 id="formTitle">Sign Up</h2>
-        
-        <!-- Sign Up Form -->
-        <form id="signupForm" action="" method="post">
-          <label>Full Name</label><br>
-          <input type="text" name="name" id="name" placeholder="Enter Full Name"><br>
-
-          <label>Email Address</label><br>
-          <input type="email" name="email" id="email" placeholder="Enter Your Email"><br>
-
-          <label>Contact Number</label><br>
-          <input type="tel" name="mob" id="mob" placeholder="Enter Your Contact Number"><br>
-
-          <label>Password</label><br>
-          <input type="password" name="pass" id="pass" placeholder="Enter Your Password"><br>
-          <label>Confirm Password</label><br>
-          <input type="password" name="cpass" id="cpass" placeholder="Enter Your Confirm Password"><br>
-
-          <button type="submit">Register</button>
-        </form>
-
-        <!-- Sign In Form -->
-        <form id="signinForm" style="display: none;">
-          <label>Email Address</label><br>
-          <input type="email" placeholder="Enter Your Email"><br>
-
-          <label>Password</label><br>
-          <input type="password" placeholder="Enter Your Password"><br>
-
-          <!-- Reset Password link -->
-          <div class="reset-password-container">
-            <a href="#" class="reset-password-link">Reset Password</a>
-          </div>
-
-          <button type="submit">Sign In</button>
-        </form>
-
-        <!-- Reset Password Form -->
-        <form id="resetPasswordForm" style="display: none;">
-          <label>Email Address</label><br>
-          <input type="email" placeholder="Enter Your Email"><br>
-
-          <label>WhatsApp Number</label><br>
-          <input type="tel" placeholder="Enter Your WhatsApp Number"><br>
-
-          <button type="button">Get OTP</button>
-        </form>
-
-        <!-- <button class="google-btn">Register with Google</button> -->
-        <p>
-          Don't have an account <a href="#" id="toggleFormLink">Sign in</a>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- -------------------login page close -------------------  -->
-
-  <!-- Image Slider -->
-  <div class="slider">
-    <div class="slide active">
-      <img src="assets/img3.jpg" alt="Slider Image 1">
-      <div class="caption">
-        <h1>Rural Horizon</h1>
-        <p>Empowering Rural Communities</p>
-        <a href="#"><button class="slider-btn1">Get Started</button></a>
-      </div>
-    </div>
-    <div class="slide">
-      <img src="assets/img1.jpg" alt="Slider Image 2">
-      <div class="caption">
-        <h1>Rural Horizon</h1>
-        <p>Education for All</p>
-        <a href="#"><button class="slider-btn2">Get Started</button></a>
-      </div>
-    </div>
-    <div class="slide">
-      <img src="assets/img2.jpg" alt="Slider Image 3">
-      <div class="caption">
-        <h1>Rural Horizon</h1>
-        <p>Community Support</p>
-        <a href="#"><button class="slider-btn3">Get Started</button></a>
-      </div>
-    </div>
-    <div class="slider-controls">
-      <span class="dot" onclick="setSlide(0)"></span>
-      <span class="dot" onclick="setSlide(1)"></span>
-      <span class="dot" onclick="setSlide(2)"></span>
-    </div>
-  </div>
-
-  <!-- streams cards -->
-
-  <div class="card-container">
-    <!-- Card 1 -->
-    <div class="card">
-      <!-- <div class="icon"><i class="fas fa-laptop"></i></div> -->
-      <div class="streamcard-img"><img src="assets/card1.jpg" alt="Science"></div>
-      <h3>Science</h3>
-      <p><b>"Explore Your Path in Science"</b> <br>Science offers careers in medicine, engineering, data science etc.
-        driving innovation and real-world impact.</p>
-      <a href="#"><button class="read-more">Read More</button></a>
+    <div id="loader" class="loader">
+      <div class="spinner"></div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="card">
-      <!-- <div class="icon"><i class="fas fa-users"></i></div> -->
-      <div class="streamcard-img"><img src="assets/card2.png" style="transform: scale(1.35);" alt="commerce"></div>
 
-      <h3>Commerce</h3>
-      <p><b>"Build a Future in Commerce"</b> <br>Commerce opens paths in finance, management, and economics, empowering
-        you to shape industries and markets.</p>
-      <a href="#"><button class="read-more">Read More</button></a>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand"><img src="assets/logo1.png" alt="logo"></div>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <ul class="navbar-links">
+        <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+        <!-- <li><a href="#"><i class="fas fa-graduation-cap"></i>Streams</a></li> -->
+        <li><a href="Resourses/resource.html"><i class="fas fa-book"></i>Resourses</a></li>
+        <li><a href="Careers/careers.html"><i class="fas fa-users"></i>Careers</a></li>
+        <li><a href="governmentexam/government.html"><i class="fas fa-cogs"></i>Govt Exams and Schemes</a></li>
+        <li><a href="ContactUs/contact.html"><i class="fas fa-phone"></i>Contact Us</a></li>
+        <li><a href="#" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+        <!-- Add this to your Navbar for Dark Mode toggle -->
+        <li><button id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ----------login page ------------------------>
+    <!-- Login Popup -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <div class="left-section">
+          <img src="assets/logo2.png" alt="">
+          <!-- <h2>Rural Horizon</h2> -->
+          <!-- <p><i>Shaping tomorrow career's today</i></p> -->
+          <p>By signing up, you can avail of lots of benefits:</p>
+          <ul>
+            <li>Career guidance after 10th and 12th.</li>
+            <li>Govenment exams and schemes.</li>
+            <li>Quizzes for Brushup your Knowledge.</li>
+            <li>Find top universities/colleges.</li>
+            <li>Connect with expert instructors.</li>
+          </ul>
+        </div>
+        <div class="right-section">
+          <h2 id="formTitle">Sign Up</h2>
+
+          <!-- Sign Up Form -->
+          <form id="signupForm" action="" method="post">
+            <label>Full Name</label><br>
+            <input type="text" name="name" id="name" placeholder="Enter Full Name"><br>
+
+            <label>Email Address</label><br>
+            <input type="email" name="email" id="email" placeholder="Enter Your Email"><br>
+
+            <label>Contact Number</label><br>
+            <input type="tel" name="mob" id="mob" placeholder="Enter Your Contact Number"><br>
+
+            <label>Password</label><br>
+            <input type="password" name="pass" id="pass" placeholder="Enter Your Password"><br>
+            <label>Confirm Password</label><br>
+            <input type="password" name="cpass" id="cpass" placeholder="Enter Your Confirm Password"><br>
+
+            <button type="submit">Register</button>
+          </form>
+
+          <!-- Sign In Form -->
+          <form id="signinForm" style="display: none;">
+            <label>Email Address</label><br>
+            <input type="email" placeholder="Enter Your Email"><br>
+
+            <label>Password</label><br>
+            <input type="password" placeholder="Enter Your Password"><br>
+
+            <!-- Reset Password link -->
+            <div class="reset-password-container">
+              <a href="#" class="reset-password-link">Reset Password</a>
+            </div>
+
+            <button type="submit">Sign In</button>
+          </form>
+
+          <!-- Reset Password Form -->
+          <form id="resetPasswordForm" style="display: none;">
+            <label>Email Address</label><br>
+            <input type="email" placeholder="Enter Your Email"><br>
+
+            <label>WhatsApp Number</label><br>
+            <input type="tel" placeholder="Enter Your WhatsApp Number"><br>
+
+            <button type="button">Get OTP</button>
+          </form>
+
+          <!-- <button class="google-btn">Register with Google</button> -->
+          <p>
+            Don't have an account <a href="#" id="toggleFormLink">Sign in</a>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- Card 3 -->
-    <div class="card">
-      <!-- <div class="icon"><i class="fas fa-book"></i></div> -->
-      <div class="streamcard-img"><img src="assets/card3.jpg" style="border-radius: 50%;height: 150px;width: 150px;" alt="Arts"></div>
-      <h3>Arts</h3>
-      <p><b>"Create, Inspire, and Lead with Arts"</b> <br>Arts provide careers in design, media, psychology, and public
-        service, enabling you to create, inspire, and lead.</p>
-      <a href="#"><button class="read-more">Read More</button></a>
-    </div>
-  </div>
+    <!-- -------------------login page close -------------------  -->
 
-
-  
-  <!-- -------------------section 1 --------------------- -->
-  <div class="container-sec1">
-    <div class="image-sec1">
-      <img src="assets/campus.jpg" alt="Campus Image">
-    </div>
-    <div class="content-sec1">
-      <h1>Welcome To Rural Horizon</h1>
-      <p>At Rural Horizon, we are dedicated to empowering students from rural and urban backgrounds by providing
-        comprehensive career guidance and resources. Our platform offers a structured roadmap for various academic
-        streams, detailed information on government exams and scholarships, and personalized career quizzes to help
-        students make informed decisions about their future.</p>
-      <p>Our mission is to bridge the gap in educational opportunities by offering reliable and accessible guidance for
-        students from diverse backgrounds. Whether you're exploring Science, Commerce, or Biology, Rural Horizon is here
-        to support you with tailored content, expert advice, and success stories to inspire your journey.</p>
-      <button onclick="showAlert()">Read More</button>
-    </div>
-  </div>
-
-  <!-- Parallax Header Section -->
-  <div class="parallax-section">
-    <h1>Shaping the Career Guidance</h1>
-    <p>Comprehensive career guidance solutions for rural students, parents, educators, and schools.</p>
-  </div>
-
-
-  <!--   Shaping the career guidance       -->
-
-  <div class="containers">
-    <h1>Shaping the Career Guidance</h1>
-    <p>Comprehensive career guidance solutions for  students, parents, educators, and schools.</p>
-    <div class="cards1">
-      <div class="card1">
-        <img src="assets/education2.jpg" alt="Career Assessment">
-        <h3>Discover Your Best Career</h3>
-        <p>Help students find their ideal career with personalized career assessment and expert guidance.</p>
+    <!-- Image Slider -->
+    <div class="slider">
+      <div class="slide active">
+        <img src="assets/img3.jpg" alt="Slider Image 1">
+        <div class="caption">
+          <h1>Rural Horizon</h1>
+          <p>Empowering Rural Communities</p>
+          <a href="Careers/careers.html"><button class="slider-btn1">Get Started</button></a>
+        </div>
       </div>
-      <div class="card1">
-        <img src="assets/education4.jpg" alt="Professional World">
-        <h3>Explore Career Opportunities</h3>
-        <p>Learn about professions with virtual simulations, career blogs, and video resources.</p>
+      <div class="slide">
+        <img src="assets/img1.jpg" alt="Slider Image 2">
+        <div class="caption">
+          <h1>Rural Horizon</h1>
+          <p>Education for All</p>
+          <a href="Careers/careers.html"><button class="slider-btn2">Get Started</button></a>
+        </div>
       </div>
-      <div class="card1">
-        <img src="assets/education3.jpg" alt="College Guidance">
-        <h3>Resources</h3>
-        <p>Requires a combination of well-curated content, expert mentorship, and the right technological tools.</p>
+      <div class="slide">
+        <img src="assets/img2.jpg" alt="Slider Image 3">
+        <div class="caption">
+          <h1>Rural Horizon</h1>
+          <p>Community Support</p>
+          <a href="Careers/careers.html"><button class="slider-btn3">Get Started</button></a>
+        </div>
       </div>
-      <div class="card1">
-        <img src="assets/eduction1.jpg" alt="Career Ecosystem">
-        <h3>Empower Schools</h3>
-        <p>Support schools in building career guidance programs aligned with modern education policies.</p>
-      </div>
-      <div class="card1">
-        <img src="assets/education5.jpg" alt="Certified Coaches">
-        <h3>Career Counselling</h3>
-        <p> Students to explore diverse career paths, overcome challenges, and achieve their aspirations. By focusing on personalized guidance, exposure to opportunities, and building a support system,</p>
-      </div>
-      <div class="card1">
-        <img src="assets/education6.jpg" alt="Technology Platform">
-        <h3>Government Exam And Benefits</h3>
-        <p>Government jobs not only provide financial stability but also contribute to the overall growth of families</p>
+      <div class="slider-controls">
+        <span class="dot" onclick="setSlide(0)"></span>
+        <span class="dot" onclick="setSlide(1)"></span>
+        <span class="dot" onclick="setSlide(2)"></span>
       </div>
     </div>
-  </div>
+
+    <!-- streams cards -->
+
+    <div class="card-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <!-- <div class="icon"><i class="fas fa-laptop"></i></div> -->
+        <div class="streamcard-img"><img src="assets/card1.jpg" alt="Science"></div>
+        <h3>Science</h3>
+        <p><b>"Explore Your Path in Science"</b> <br>Science offers careers in medicine, engineering, data science etc.
+          driving innovation and real-world impact.</p>
+        <a href="Careers/careers.html"><button class="read-more">Read More</button></a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <!-- <div class="icon"><i class="fas fa-users"></i></div> -->
+        <div class="streamcard-img"><img src="assets/card2.png" style="transform: scale(1.35);" alt="commerce"></div>
+
+        <h3>Commerce</h3>
+        <p><b>"Build a Future in Commerce"</b> <br>Commerce opens paths in finance, management, and economics,
+          empowering
+          you to shape industries and markets.</p>
+        <a href="Careers/careers.html"><button class="read-more">Read More</button></a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <!-- <div class="icon"><i class="fas fa-book"></i></div> -->
+        <div class="streamcard-img"><img src="assets/card3.jpg" style="border-radius: 50%;height: 150px;width: 150px;"
+            alt="Arts"></div>
+        <h3>Arts</h3>
+        <p><b>"Create, Inspire, and Lead with Arts"</b> <br>Arts provide careers in design, media, psychology, and
+          public
+          service, enabling you to create, inspire, and lead.</p>
+        <a href="Careers/careers.html"><button class="read-more">Read More</button></a>
+      </div>
+    </div>
 
 
-  <!-- Parallax Header Section -->
-  <div class="parallax-section-2">
-    <h1>Empowering Dreams, One Career at a Time</h1>
-    <p>Unlocking limitless opportunities with personalized career guidance for students, parents, and educators in rural communities.</p>
-</div>
+
+    <!-- -------------------section 1 --------------------- -->
+    <div class="container-sec1">
+      <div class="image-sec1">
+        <img src="assets/campus.jpg" alt="Campus Image">
+      </div>
+      <div class="content-sec1">
+        <h1>Welcome To Rural Horizon</h1>
+        <p>At Rural Horizon, we are dedicated to empowering students from rural and urban backgrounds by providing
+          comprehensive career guidance and resources. Our platform offers a structured roadmap for various academic
+          streams, detailed information on government exams and scholarships, and personalized career quizzes to help
+          students make informed decisions about their future.</p>
+        <p>Our mission is to bridge the gap in educational opportunities by offering reliable and accessible guidance
+          for
+          students from diverse backgrounds. Whether you're exploring Science, Commerce, or Biology, Rural Horizon is
+          here
+          to support you with tailored content, expert advice, and success stories to inspire your journey.</p>
+        <button onclick="showAlert()">Read More</button>
+      </div>
+    </div>
+
+    <!-- Parallax Header Section -->
+    <div class="parallax-section">
+      <h1>Shaping the Career Guidance</h1>
+      <p>Comprehensive career guidance solutions for rural students, parents, educators, and schools.</p>
+    </div>
+
+
+    <!--   Shaping the career guidance       -->
+
+    <div class="containers">
+      <h1>Shaping the Career Guidance</h1>
+      <p>Comprehensive career guidance solutions for students, parents, educators, and schools.</p>
+      <div class="cards1">
+        <div class="card1">
+          <img src="assets/education2.jpg" alt="Career Assessment">
+          <h3>Discover Your Best Career</h3>
+          <p>Help students find their ideal career with personalized career assessment and expert guidance.</p>
+        </div>
+        <div class="card1">
+          <img src="assets/education4.jpg" alt="Professional World">
+          <h3>Explore Career Opportunities</h3>
+          <p>Learn about professions with virtual simulations, career blogs, and video resources.</p>
+        </div>
+        <div class="card1">
+          <img src="assets/education3.jpg" alt="College Guidance">
+          <h3>Resources</h3>
+          <p>Requires a combination of well-curated content, expert mentorship, and the right technological tools.</p>
+        </div>
+        <div class="card1">
+          <img src="assets/eduction1.jpg" alt="Career Ecosystem">
+          <h3>Empower Schools</h3>
+          <p>Support schools in building career guidance programs aligned with modern education policies.</p>
+        </div>
+        <div class="card1">
+          <img src="assets/education5.jpg" alt="Certified Coaches">
+          <h3>Career Counselling</h3>
+          <p> Students to explore diverse career paths, overcome challenges, and achieve their aspirations. By focusing
+            on personalized guidance, exposure to opportunities, and building a support system,</p>
+        </div>
+        <div class="card1">
+          <img src="assets/education6.jpg" alt="Technology Platform">
+          <h3>Government Exam And Benefits</h3>
+          <p>Government jobs not only provide financial stability but also contribute to the overall growth of families
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Parallax Header Section -->
+    <div class="parallax-section-2">
+      <h1>Empowering Dreams, One Career at a Time</h1>
+      <p>Unlocking limitless opportunities with personalized career guidance for students, parents, and educators in
+        rural communities.</p>
+    </div>
 
 
     <!--    Why choose rural horizon -->
- 
+
     <div class="container2">
       <div class="sec2">
-          <div class="section2">
-              <h1>Why Choose Rural Horizon?</h1>
-          </div>
-          <div class="section2">
-              <p><strong>Career Guidance</strong></p>
-              <p>Expert advice on choosing the right career path based on your interest and abilities.
-                  <br>Career guidance helps people to reflect on their ambitions,
-                  <br> interests, qualifications, and abilities.
-              </p>
-          </div>
-          <div class="section2">
-              <p><strong>Scholarships</strong></p>
-              <p>Comprehensive information about educational scholarships and financial aid.</p>
-          </div>
-          <div class="section2">
-              <p><strong>Government Schemes</strong></p>
-              <p>Details about government initatatives and support programs for students.</p>
-          </div>
-          <div class="section2">
-              <p><strong>Counselling Support</strong></p>
-              <p>One-to-One guidance from experienced career counselors.</p>
-          </div>
-          <div class="section2">
-              <button>TALK TO US</button>
-          </div>
+        <div class="section2">
+          <h1>Why Choose Rural Horizon?</h1>
+        </div>
+        <div class="section2">
+          <p><strong>Career Guidance</strong></p>
+          <p>Expert advice on choosing the right career path based on your interest and abilities.
+            <br>Career guidance helps people to reflect on their ambitions,
+            <br> interests, qualifications, and abilities.
+          </p>
+        </div>
+        <div class="section2">
+          <p><strong>Scholarships</strong></p>
+          <p>Comprehensive information about educational scholarships and financial aid.</p>
+        </div>
+        <div class="section2">
+          <p><strong>Government Schemes</strong></p>
+          <p>Details about government initatatives and support programs for students.</p>
+        </div>
+        <div class="section2">
+          <p><strong>Counselling Support</strong></p>
+          <p>One-to-One guidance from experienced career counselors.</p>
+        </div>
+        <div class="section2">
+          <button>TALK TO US</button>
+        </div>
       </div>
       <div class="sections2">
-          <div class="frdiv2">
-              <img src="assets/photo1.jpg" alt="Oxford Logo">
-              <img src="assets/photo2.jpg" alt="Yale Logo">
-              <img src="assets/photo3.jpg" alt="Penn Logo">
-          </div>
-          <div class="secdiv2">
-              <img src="assets/photo4.jpg" alt="Lincoln Logo">
-              <img src="assets/photo5.jpg" alt="">
-              <img src="assets/photo6.jpg" alt="">
-          </div>
-
-
-      </div>
-  </div>
-
-
-
-  <!-- --------------------- section 2 ------------------------  -->
-<div>
-  <section class="course-section">
-    <div class="container-sec2">
-      <div class="text-content-sec2">
-        <h1>About Us</h1>
-        <h3>Pathways to Success After Class 10 for Rural Youth</h3>
-        <p>Access guidance on available courses, exams, and scholarships to open doors to a brighter future.</p>
-        <a href="#" class="btn">View Courses</a>
-      </div>
-
-      <div class="image-grid">
-        <div class="image-item">
-          <img src="assets/sec1img1.avif" alt="Personal Development">
-          <div class="label" style="background: #023e8a;">PERSONAL DEVELOPMENT</div>
+        <div class="frdiv2">
+          <img src="assets/photo1.jpg" alt="Oxford Logo">
+          <img src="assets/photo2.jpg" alt="Yale Logo">
+          <img src="assets/photo3.jpg" alt="Penn Logo">
         </div>
-        <div class="image-item">
-          <img src="assets/sec1img2.jpg" alt="Skill Development">
-          <div class="label">SKILL DEVELOPMENT</div>
+        <div class="secdiv2">
+          <img src="assets/photo4.jpg" alt="Lincoln Logo">
+          <img src="assets/photo5.jpg" alt="">
+          <img src="assets/photo6.jpg" alt="">
         </div>
-        <div class="image-item">
-          <img src="assets/sec1img3.avif" alt="Entrepreneurship">
-          <div class="label" style="background: #001427;">ENTREPRENEURSHIP</div>
-        </div>
-        <div class="image-item">
-          <img src="assets/sec1img4.avif" alt="Digital Literacy">
-          <div class="label" style="background: #3c096c;">DIGITAL LITERACY</div>
-        </div>
+
+
       </div>
     </div>
-  </section>
-</div>
-
-  <!-- -------------------- section 2 closed ----------------------------- -->
 
 
 
+    <!-- --------------------- section 2 ------------------------  -->
+    <div>
+      <section class="course-section">
+        <div class="container-sec2">
+          <div class="text-content-sec2">
+            <h1>About Us</h1>
+            <h3>Pathways to Success After Class 10 for Rural Youth</h3>
+            <p>Access guidance on available courses, exams, and scholarships to open doors to a brighter future.</p>
+            <a href="#" class="btn">View Courses</a>
+          </div>
 
-  <!-- Map Integration -->
-  <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</div>
-  <!-- ------------------------- Footer ------------------------- -->
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-column"><img src="assets/logo3.png" alt=""></div>
-        <!-- Contact Us Section -->
-        <div class="footer-column">
-          <h3>Contact Us</h3>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Uttar Pradesh, India 201009
-          </p>
-          <p>
-            <a href="https://wa.me/7982431046" target="_blank" class="footer-contact"><i class="fas fa-phone-alt"></i>
-              +(91) - 7982431046</a>
-          </p>
-          <p>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ruralhorizonsupport@gmail.com" target="_blank"
-              class="footer-contact mail"><i class="fas fa-envelope"></i> ruralhorizon@support.com</a>
-          </p>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <div class="image-grid">
+            <div class="image-item">
+              <img src="assets/sec1img1.avif" alt="Personal Development">
+              <div class="label" style="background: #023e8a;">PERSONAL DEVELOPMENT</div>
+            </div>
+            <div class="image-item">
+              <img src="assets/sec1img2.jpg" alt="Skill Development">
+              <div class="label">SKILL DEVELOPMENT</div>
+            </div>
+            <div class="image-item">
+              <img src="assets/sec1img3.avif" alt="Entrepreneurship">
+              <div class="label" style="background: #001427;">ENTREPRENEURSHIP</div>
+            </div>
+            <div class="image-item">
+              <img src="assets/sec1img4.avif" alt="Digital Literacy">
+              <div class="label" style="background: #3c096c;">DIGITAL LITERACY</div>
+            </div>
           </div>
         </div>
-
-        <!-- Featured Links Section -->
-        <div class="footer-column">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Career Suggestions</a></li>
-            <li><a href="#">Government schemes</a></li>
-            <li><a href="#">Quiz</a></li>
-            <li><a href="#">Feedback and contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Newsletter Section -->
-        <div class="footer-column">
-          <h3>Mail Us</h3>
-          <div class="newsletter">
-            <input type="email" placeholder="Email" />
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ruralhorizonsupport@gmail.com"><button><i
-                  class="fas fa-envelope"></i></button></a>
-          </div>
-          <p>If you have any questions, please don't hesitate to contact us. We would be happy to assist you in
-            resolving any issues.</p>
-        </div>
-      </div>
-      <hr />
-      <div class="footer-bottom">
-        <p>© 2024 Rural-Horizon. All rights reserved </p>
-        <p><a href="#">Privacy policy</a> | <a href="#">Terms of service</p></a>
-      </div>
+      </section>
     </div>
-  </footer>
+
+    <!-- -------------------- section 2 closed ----------------------------- -->
+
+
+
+
+    <!-- Map Integration -->
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;"
+        allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <!-- ------------------------- Footer ------------------------- -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column"><img src="assets/logo3.png" alt=""></div>
+          <!-- Contact Us Section -->
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Uttar Pradesh, India 201009
+            </p>
+            <p>
+              <a href="https://wa.me/7982431046" target="_blank" class="footer-contact"><i class="fas fa-phone-alt"></i>
+                +(91) - 7982431046</a>
+            </p>
+            <p>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ruralhorizonsupport@gmail.com" target="_blank"
+                class="footer-contact mail"><i class="fas fa-envelope"></i> ruralhorizon@support.com</a>
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <!-- Featured Links Section -->
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="Careers/careers.html">Career Suggestions</a></li>
+              <li><a href="governmentexam/government.html">Government schemes</a></li>
+              <li><a href="#">Quiz</a></li>
+              <li><a href="ContactUs/contact.html">Feedback and contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter Section -->
+          <div class="footer-column">
+            <h3>Mail Us</h3>
+            <div class="newsletter">
+              <input type="email" placeholder="Email" />
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ruralhorizonsupport@gmail.com"><button><i
+                    class="fas fa-envelope"></i></button></a>
+            </div>
+            <p>If you have any questions, please don't hesitate to contact us. We would be happy to assist you in
+              resolving any issues.</p>
+          </div>
+        </div>
+        <hr />
+        <div class="footer-bottom">
+          <p>© 2024 Rural-Horizon. All rights reserved </p>
+          <p><a href="#">Privacy policy</a> | <a href="#">Terms of service</p></a>
+        </div>
+      </div>
+    </footer>
 
 
 </body>
@@ -414,46 +423,46 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $("#signupForm").validate({
-            rules: {
-                name: {
-                    required: true,
-                    minlength: 2
-                },
-                email: {
-                    required: true,
-                },
-                mob: {
-                    required: true,
-                },
-                pass: {
-                    required: true,
-                    minlength: 5
-                    },
-                    cpass: {
-                    required: true,
-                     minlength: 5,
-                    equalTo: "#pass"
-                    }
-            },
-            messages: {
-                name: {
-                    required: "Please enter your name",
-                    minlength: "Your name must consist of at least 4 characters"
-                },
-                mob: {
-                    required: "Please enter your mobile no"
-                },
-                pass: {
-                    required: "Please enter your password"
-                },
-                cpass: {
-                    required: "confirm Password missmatch"
-                }
-            }
-        });
+  $(document).ready(function () {
+    $("#signupForm").validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 2
+        },
+        email: {
+          required: true,
+        },
+        mob: {
+          required: true,
+        },
+        pass: {
+          required: true,
+          minlength: 5
+        },
+        cpass: {
+          required: true,
+          minlength: 5,
+          equalTo: "#pass"
+        }
+      },
+      messages: {
+        name: {
+          required: "Please enter your name",
+          minlength: "Your name must consist of at least 4 characters"
+        },
+        mob: {
+          required: "Please enter your mobile no"
+        },
+        pass: {
+          required: "Please enter your password"
+        },
+        cpass: {
+          required: "confirm Password missmatch"
+        }
+      }
     });
+  });
 </script>
 
 </html>

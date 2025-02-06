@@ -50,6 +50,7 @@ body {
 .stream img {
     width: 38%;
     height: 60%;
+    padding: 0 20px;
 }
 
 .text-content {
@@ -82,5 +83,14 @@ body {
     .text-content {
         width: 100%;
         text-align: center;
+    }
+    .text-content h2{
+        padding: 0 10px;
+    }
+    .text-content h3{
+        padding: 0 10px;
+    }
+    .text-content p{
+        padding: 0 15px;
     }
 }
