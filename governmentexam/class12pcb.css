@@ -56,7 +56,8 @@ body {
 
 .text-content {
     padding: 20px;
-    width: 60%;
+    /* width: 60%; */
+    width: auto;
 }
 
 .text-content h2 {
