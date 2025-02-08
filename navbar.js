@@ -106,6 +106,9 @@ resetPasswordLink.addEventListener('click', (event) => {
     showResetPasswordForm();
 });
 
+
+
+
 function toggleDarkMode() {
     const body = document.body;
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -156,3 +159,128 @@ function showLoader() {
       }, 2000); // Match the timeout duration
     });
   });
+
+
+// main 
+
+// <!-- ----------------------- sign up form validation   ------------------ -->
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Form submit hone se rokna hai taaki message dikh sake
+
+  let name = document.getElementById("signupName").value; // Get name input
+  let email = document.getElementById("signupEmail").value;
+  let password = document.getElementById("password").value;
+  let confirmPassword = document.getElementById("confirm_password").value;
+  let passwordError = document.getElementById("passwordError");
+  let confirmPasswordError = document.getElementById("confirmPasswordError");
+  let successMessage = document.getElementById("successMessage");
+
+  let passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  passwordError.textContent = "";
+  confirmPasswordError.textContent = "";
+  successMessage.style.display = "none"; // Har bar submit pe message hide karna hai
+
+  // Password validation
+  if (!passwordPattern.test(password)) {
+      passwordError.textContent = "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character.";
+      return;
+  }
+
+  // Confirm password validation
+  if (password !== confirmPassword) {
+      confirmPasswordError.textContent = "Passwords do not match!";
+      return;
+  }
+
+  // Agar sab kuch sahi hai to success message dikhayein
+  successMessage.style.display = "block";
+
+  // Storing name, email & password in localStorage for Signin verification
+  localStorage.setItem("savedName", name);
+  localStorage.setItem("savedEmail", email);
+  localStorage.setItem("savedPassword", password);
+
+  //Reset Form
+  document.getElementById("signupForm").reset(); // Form clear karna
+
+  // Yaha pe aap actual backend ke saath integration kar sakte hain (like sending data to server)
+});
+
+
+// ------------------ SIGNIN FORM VALIDATION ------------------
+document.getElementById("signinForm").addEventListener("submit", function(event) {
+event.preventDefault();
+
+let enteredEmail = document.getElementById("signinEmail").value;
+let enteredPassword = document.getElementById("signinPassword").value;
+let signinError = document.getElementById("signinError");
+let signinSuccess = document.getElementById("signinMessage");
+
+signinError.style.display = "none";
+signinSuccess.style.display = "none";
+
+let savedName = localStorage.getItem("savedName");
+let savedEmail = localStorage.getItem("savedEmail");
+let savedPassword = localStorage.getItem("savedPassword");
+
+// Checking if entered credentials match stored credentials
+if (enteredEmail === savedEmail && enteredPassword === savedPassword) {
+signinSuccess.style.display = "block";
+
+ // Update login button to show user's name
+ document.getElementById("loginBtn").textContent = savedName;
+
+ // Show logout button but keep it hidden initially
+ document.getElementById("logoutButton").style.display = "none";
+
+} else {
+signinError.style.display = "block";
+}
+
+//Reset Form
+document.getElementById("signinForm").reset(); // Form clear karna
+});
+
+// ------------------ TOGGLE LOGOUT BUTTON ------------------
+document.getElementById("loginBtn").addEventListener("click", function() {
+let logoutButton = document.getElementById("logoutButton");
+
+// Only toggle logout if user is logged in
+if (localStorage.getItem("savedName")) {
+  if (logoutButton.style.display === "none" || logoutButton.style.display === "") {
+      logoutButton.style.display = "block";
+  } else {
+      logoutButton.style.display = "none";
+  }
+}
+});
+
+// ------------------ LOGOUT FUNCTION ------------------
+document.getElementById("logoutButton").addEventListener("click", function() {
+// Remove user data from localStorage
+localStorage.removeItem("savedName");
+localStorage.removeItem("savedEmail");
+localStorage.removeItem("savedPassword");
+
+// Reset login button text
+document.getElementById("loginBtn").textContent = "Login";
+
+// Hide logout button
+document.getElementById("logoutButton").style.display = "none";
+});
+
+
+// ------------------open close eye icon-----------------
+function togglePassword(fieldId, icon) {
+    let field = document.getElementById(fieldId);
+    if (field.type === "password") {
+        field.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        field.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}

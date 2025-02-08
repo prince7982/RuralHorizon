@@ -322,8 +322,9 @@
         height: 100%;
     }
     .left-section img {
-        height: 11rem;
-        width: 11rem;
+        margin-top: 5px ;
+        height: 8rem;
+        width: 8rem;
     }
     
     .left-section,
@@ -682,3 +683,78 @@
       transform: rotate(360deg);
     }
   }
+
+
+
+
+                                    /* signupform validation css  */
+.error{
+    color: red !important;
+    font-size: 14px !important;
+  }
+  .success{
+    color:rgb(29, 183, 29) !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+  }
+  
+  /* eye icon css styling */
+  .input-container {
+    position: relative;
+    width: 100%;
+    max-width: auto;
+  }
+  
+  .eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+           /* ----------dropdown logout ---------- */
+           .logoutbtn{
+            border: none;
+            border-radius: 2px;
+            margin-left: 5px;
+            background: red;
+            color: #fff;
+            width: 50px;
+           }
+           @media (max-width: 768px){
+            .logoutbtn{
+              margin: 5px 0 0 25px;
+              font-size: 15px;
+              padding: 4px 2px;
+            }
+           }
+           @media (max-width: 480px){
+            .logoutbtn{
+              margin: 5px 0 0 25px;
+              font-size: 15px;
+              padding: 4px 2px;
+            }
+           }
+           @media (max-width: 1024px){
+            .logoutbtn{
+              margin: 5px 0 0 25px;
+              font-size: 15px;
+              padding: 4px 2px;
+            }
+           }
+           @media (max-width: 576px){
+            .logoutbtn{
+              margin: 5px 0 0 25px;
+              font-size: 15px;
+              padding: 4px 2px;
+            }
+           }
+           @media (max-width: 992px){
+            .logoutbtn{
+              margin: 5px 0 0 25px;
+              font-size: 15px;
+              padding: 4px 2px;
+            }
+           }
+        
