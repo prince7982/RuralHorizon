@@ -60,19 +60,19 @@
 
           <!-- Sign Up Form -->
           <form id="signupForm" action="" method="post">
-            <label>Full Name</label><br>
-            <input type="text" name="name" id="name" placeholder="Enter Full Name"><br>
+            <label for="name">Full Name</label><br>
+            <input type="text" name="name" id="name" minlength="5" pattern="[A-Za-z]{2,}(\s[A-Za-z]{2,})?" title="Enter at least 5 characters, with an optional space between first and last name." placeholder="Enter Full Name" required><br>
 
-            <label>Email Address</label><br>
-            <input type="email" name="email" id="email" placeholder="Enter Your Email"><br>
+            <label for="email">Email Address</label><br>
+            <input type="email" name="email" id="email" placeholder="Enter Your Email" required><br>
 
-            <label>Contact Number</label><br>
-            <input type="tel" name="mob" id="mob" placeholder="Enter Your Contact Number"><br>
+            <label for="mob">Contact Number</label><br>
+            <input type="tel" name="mob" id="mob" pattern="[6-9]\d{9}" minlength="10" maxlength="10" title="Enter a valid 10-digit mobile number starting with 6, 7, 8, or 9." placeholder="Enter Your Contact Number" required><br>
 
-            <label>Password</label><br>
-            <input type="password" name="pass" id="pass" placeholder="Enter Your Password"><br>
-            <label>Confirm Password</label><br>
-            <input type="password" name="cpass" id="cpass" placeholder="Enter Your Confirm Password"><br>
+            <label for="pass">Password</label><br>
+            <input type="password" name="pass" id="pass" minlength="8" maxlength="20" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" title="Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character." placeholder="Enter Your Password" required><br>
+            <label for="cpass">Confirm Password</label><br>
+            <input type="password" name="cpass" id="cpass" minlength="8" maxlength="20" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" title="Confirm password must match the above password requirements." placeholder="Enter Your Confirm Password" required><br>
 
             <button type="submit">Register</button>
           </form>
@@ -420,7 +420,7 @@
 </body>
 
 <!-- jquery for login and password     -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 <script>
   $(document).ready(function () {
@@ -463,6 +463,6 @@
       }
     });
   });
-</script>
+</script> -->
 
 </html>
