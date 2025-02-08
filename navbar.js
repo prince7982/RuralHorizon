@@ -1,15 +1,18 @@
 function loadComponent(file, elementId) {
-    fetch(file)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById(elementId).innerHTML = data;
-        });
+  fetch(file)
+      .then(response => response.text())
+      .then(data => {
+          document.getElementById(elementId).innerHTML = data;
+      })
+      .catch(error => console.error(`Error loading ${file}:`, error));
 }
 
-window.onload = function () {
-    loadComponent("../navbar.html", "navbar-container");
-    loadComponent("../footer.html", "footer-container");
-};
+// Load navbar and footer as early as possible
+document.addEventListener("DOMContentLoaded", function () {
+  loadComponent("../navbar.html", "navbar-container");
+  loadComponent("../footer.html", "footer-container");
+});
+
 
 
 // Toggle navbar for responsive menu
