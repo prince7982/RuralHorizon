@@ -11,6 +11,11 @@ body {
     color: #333;
 }
 
+.dark-mode .specializations-grid,.dark-mode .specializations-detail,.dark-mode .education-section,.dark-mode .opportunities-section{
+    color: #333;
+}
+
+
 h1, h2, h3, h4, h5 {
     color: #1a472a;
 }
@@ -47,7 +52,7 @@ a {
 .section-header {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin: 30px 0;
 }
 
 .section-header i {

@@ -16,6 +16,16 @@ body {
     margin: 0 auto;
 }
 
+.dark-mode .specializations-grid,.dark-mode .specializations-detail{
+    color: #333;
+}
+.dark-mode .education-section,.dark-mode .opportunities-section{
+    color: #333;
+}
+.dark-mode .education-section i,.dark-mode .opportunities-section i{
+    color: #fff;
+}
+
 /* Hero Section */
 .hero-section {
     background-color: #1e2a3a;
@@ -38,7 +48,7 @@ body {
 .section-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .section-header i {

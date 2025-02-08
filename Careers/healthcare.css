@@ -31,6 +31,10 @@ body {
     padding: 0 2rem;
 }
 
+.dark-mode .overview-section .section-header h2{
+    color: black;
+}
+
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -59,6 +63,10 @@ body {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--primary);
+}
+
+.dark-mode .section-header h2{
+    color: #fff;
 }
 
 .section-header i {

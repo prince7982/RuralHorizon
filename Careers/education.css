@@ -367,3 +367,11 @@ body {
         font-size: 1.1rem;
     }
 }
+
+
+.dark-mode .opportunities-section h2{
+    color: #fff;
+}
+.dark-mode .education-section h2{
+    color: #fff;
+}
