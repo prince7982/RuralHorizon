@@ -1,17 +1,51 @@
-function loadComponent(file, elementId) {
-  fetch(file)
+function getBasePath() {
+  let depth = window.location.pathname.split('/').length - 2; 
+  let prefix = depth > 0 ? '../'.repeat(depth) : ''; 
+  return prefix;
+}
+
+function loadComponent(file, elementId, callback) {
+  let filePath = getBasePath() + file;
+  fetch(filePath)
       .then(response => response.text())
       .then(data => {
           document.getElementById(elementId).innerHTML = data;
+          if (callback) callback(); // Ensure functions run after navbar loads
       })
       .catch(error => console.error(`Error loading ${file}:`, error));
 }
 
-// Load navbar and footer as early as possible
+// Function to show loader
+function showLoader() {
+  const loader = document.getElementById('loader');
+  loader.classList.add('visible');
+  setTimeout(() => {
+      loader.classList.remove('visible');
+  }, 2000); 
+}
+
+// Function to add loader on navbar links
+function addLoaderToNavbarLinks() {
+  document.querySelectorAll('.navbar-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+          e.preventDefault();
+          showLoader();
+          const targetUrl = e.target.getAttribute('href');
+          setTimeout(() => {
+              if (targetUrl !== '#') {
+                  window.location.href = targetUrl;
+              }
+          }, 2000); 
+      });
+  });
+}
+
+// Load navbar and footer on all pages
 document.addEventListener("DOMContentLoaded", function () {
-  loadComponent("../navbar.html", "navbar-container");
-  loadComponent("../footer.html", "footer-container");
+  loadComponent("navbar.html", "navbar-container", addLoaderToNavbarLinks); // Call loader function after navbar loads
+  loadComponent("footer.html", "footer-container");
 });
+
 
 
 
