@@ -406,11 +406,16 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: opacity 0.5s ease;
+    transform: scale(1.1);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   }
   
   .slide.active {
     display: block;
+  }
+  
+  .dot.active {
+    background-color: black; /* Highlight active dot */
   }
   
   .slide img {
