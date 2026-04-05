@@ -402,17 +402,34 @@
   }
   
   .slide {
-    display: none;
+    /* display: none; */
     position: absolute;
     width: 100%;
     height: 100%;
-    transform: scale(1.1);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
   }
   
   .slide.active {
-    display: block;
+    /* display: block; */
+    opacity: 1;
+    /* transform: scale(1); zoom out */
+    z-index: 2;
   }
+
+
+
+  .slide.active img {
+    /* display: block; */
+    opacity: 1;
+    transform: scale(1); /* zoom out */
+    filter: blur(0);
+    /* z-index: 2; */
+  }
+
+ 
+
+
   
   .dot.active {
     background-color: black; /* Highlight active dot */
@@ -421,7 +438,12 @@
   .slide img {
     width: 100%;
     height: 100%;
+    opacity: 0;
     object-fit: cover;
+    transform: scale(1.2);
+    transition: opacity 1.2s ease-in-out, transform 6s linear;
+    will-change: transform, opacity;
+    filter: blur(2px);
   }
   
   .caption {

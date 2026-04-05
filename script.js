@@ -1,29 +1,38 @@
 let currentSlide = 0;
+let prevSlide = 0;
+
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 
-// Function to set a specific slide
 function setSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
-  });
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-  });
+  prevSlide = currentSlide;
   currentSlide = index;
+
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active', 'prev');
+
+    if (i === currentSlide) {
+      slide.classList.add('active'); // current → zoom OUT
+    } 
+    else if (i === prevSlide) {
+      slide.classList.add('prev'); // previous → zoom IN
+    }
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentSlide);
+  });
 }
 
-// Function for automatic slide transition
 function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  setSlide(currentSlide);
+  let next = (currentSlide + 1) % slides.length;
+  setSlide(next);
 }
 
-// Start the automatic slideshow
-setInterval(nextSlide, 5000); // Change slides every 5 seconds
+setInterval(nextSlide, 5000);
 
-// Initial slide setup
-setSlide(currentSlide);
+// Initial
+setSlide(0);
 
 // Toggle navbar for responsive menu
 function toggleMenu() {
