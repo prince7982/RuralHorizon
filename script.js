@@ -29,7 +29,8 @@ function nextSlide() {
   setSlide(next);
 }
 
-setInterval(nextSlide, 5000);
+setTimeout(nextSlide, 100); // trigger first transition quickly
+setInterval(nextSlide, 6000);
 
 // Initial
 setSlide(0);

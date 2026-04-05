@@ -443,7 +443,7 @@
     transform: scale(1.2);
     transition: opacity 1.2s ease-in-out, transform 6s linear;
     will-change: transform, opacity;
-    filter: blur(2px);
+    /* filter: blur(2px); */
   }
   
   .caption {
