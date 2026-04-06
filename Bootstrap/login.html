@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    @import url('../navbar.css');
+    @import url('/Bootstrap/login.css');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+    .hidden { display: none; }
+    
+    /* Google Button Styling */
+    .google-btn {
+      background: white;
+      color: #444;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+    .google-btn:hover { background: #f1f1f1; }
+    .divider { text-align: center; margin: 15px 0; color: #888; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <div id="loader" class="loader">
+      <div class="spinner"></div>
+  </div>
+
+<div id="navbar-container"></div> <!-- Navbar will be loaded here -->
+
+<div class="modal-container" id="modalContainer">
+  <div class="modal-box">
+    <div class="left-panel">
+      <img src="../assets/logo2.png" alt="Logo" class="logo">
+      <p>By signing up, you can avail of lots of benefits:</p>
+          <ul>
+            <li>Career guidance after 10th and 12th.</li>
+            <li>Govenment exams and schemes.</li>
+            <li>Quizzes for Brushup your Knowledge.</li>
+            <li>Find top universities/colleges.</li>
+            <li>Connect with expert instructors.</li>
+          </ul>
+    </div>
+    <div class="right-panel">
+      <h2 id="formTitle">Sign In</h2>
+      <form id="authForm">
+        <div id="signupFields" class="hidden">
+          <input type="text" id="fullName" placeholder="Enter Full Name">
+          <input type="tel" id="contact" placeholder="Enter Contact Number">
+        </div>
+        <input type="email" id="email" placeholder="Enter Your Email" required>
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Enter Your Password" required>
+          <!-- <span class="toggle-password" onclick="togglePassword('password',this)"><i class="fas fa-eye eye-icon"></i></span> -->
+           <i class="fas fa-eye eye-icon toggle-password" onclick="togglePassword('password', this)"></i>
+        </div>
+        <div id="confirmPasswordField" class="password-wrapper hidden">
+          <input type="password" id="confirmPassword" placeholder="Enter Confirm Password">
+          <!-- <span class="toggle-password" onclick="togglePassword('confirmPassword',this)"><i class="fas fa-eye eye-icon"></i></span> -->
+           <i class="fas fa-eye eye-icon toggle-password" onclick="togglePassword('confirmPassword', this)"></i>
+        </div>
+        <button type="submit" id="submitButton">Sign In</button>
+      </form>
+
+      <div class="divider">OR</div>
+      <button type="button" class="google-btn" id="googleLoginBtn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="Google Logo">
+        Continue with Google
+      </button>
+
+      <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a></p>
+    </div>
+  </div>
+</div>
+
+
+<script src="/Bootstrap/login.js"></script>
+<script src="../navbar.js" defer></script>
+
+<div id="footer-container"></div> <!-- Footer will be loaded here -->
+</body>
+</html>

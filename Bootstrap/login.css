@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.modal-box {
+  display: flex;
+  background: #fff;
+  border-radius: 8px;
+  max-width: 900px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+.left-panel {
+  background: #f0f9ff;
+  flex: 1 1 300px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+.left-panel .logo {
+  width: 60%;
+  margin-bottom: 20px;
+}
+.left-panel ul {
+  text-align: left;
+  padding-left: 20px;
+}
+.left-panel ul li {
+  margin: 10px 0;
+}
+.right-panel {
+  flex: 1 1 300px;
+  padding: 30px;
+}
+.right-panel h2 {
+  margin-bottom: 20px;
+}
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.password-wrapper {
+  position: relative;
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#toggleText a {
+  color: #FFA500;
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+a {
+  display: inline-block;
+  margin-top: 10px;
+}
+.hidden {
+  display: none;
+}
+@media (max-width: 768px) {
+  .modal-box {
+    flex-direction: column;
+  }
+  .left-panel, .right-panel {
+    flex: 1 1 100%;
+  }
+  .left-panel ul li,
+    .left-panel p {
+        display: none; /* Hide list and paragraph on smaller screens */
+    }
+}
