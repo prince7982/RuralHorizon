@@ -74,7 +74,7 @@ document.getElementById('authForm').addEventListener('submit', function(e) {
             (user) => {
                 alert("Login successful!");
                 // Yahan humne redirect change kar diya hai
-                window.location.href = "/dashboard.html"; 
+                window.location.href = "../dashboard.html"; 
             },
             (err) => alert("Login failed: " + err.message)   
         );
