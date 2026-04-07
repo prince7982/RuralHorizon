@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard - Udaan Seva Samiti</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f7f6;
+        margin: 0;
+        display: flex;
+      }
+      .sidebar {
+        width: 250px;
+        background: #ff9800;
+        height: 100vh;
+        color: white;
+        padding: 20px;
+        position: fixed;
+      }
+      .sidebar h3 {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+      }
+      .sidebar p {
+        margin: 15px 0;
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 8px;
+        border-radius: 5px;
+      }
+      .sidebar p:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .main-content {
+        margin-left: 290px;
+        padding: 40px;
+        width: 100%;
+      }
+      .profile-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        text-align: center;
+      }
+
+      .profile-img-container img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid #ff9800;
+        background: #fff;
+        object-fit: cover;
+      }
+      .user-info h2 {
+        color: #d35400;
+        border-bottom: 2px solid #ff9800;
+        padding-bottom: 10px;
+        margin-top: 10px;
+      }
+      .info-list {
+        text-align: left;
+        margin-top: 20px;
+      }
+      .info-item {
+        margin: 15px 0;
+        font-size: 1.1rem;
+        color: #333;
+      }
+      .info-item i {
+        color: #ff9800;
+        margin-right: 10px;
+        width: 20px;
+      }
+
+      .logout-btn {
+        background: #ff3333;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        width: 100%;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h3>Udaan Seva Samiti</h3>
+      <p onclick="window.location.href = '/index.html'">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </p>
+      <hr style="opacity: 0.3" />
+      <p><i class="fas fa-user-circle"></i> Dashboard</p>
+      <p onclick="window.location.href = '/AdmitCard/admitcard.html'">
+        <i class="fas fa-file-alt"></i> My Admit Card
+      </p>
+      <p><i class="fas fa-poll"></i> My Result</p>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="main-content">
+      <div class="profile-card">
+        <div class="profile-img-container">
+          <img id="userAvatar" src="" alt="Profile" />
+        </div>
+        <div class="user-info">
+          <h2>Welcome, <span id="dashName">User</span>!</h2>
+          <div class="info-list">
+            <div class="info-item">
+              <i class="fas fa-envelope"></i> <strong>Email:</strong>
+              <span id="dashEmail"></span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i> <strong>Contact:</strong>
+              <span id="dashContact"></span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-id-badge"></i> <strong>Member ID:</strong>
+              <span id="dashID"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      netlifyIdentity.init();
+      netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.location.href = "/Bootstrap/login.html";
+        } else {
+          const fullName = user.user_metadata.full_name || "Member";
+          document.getElementById("dashName").textContent = fullName;
+          document.getElementById("dashEmail").textContent = user.email;
+          document.getElementById("dashContact").textContent =
+            user.user_metadata.contact_number || "Not Provided";
+          document.getElementById("dashID").textContent = user.id
+            .substring(0, 8)
+            .toUpperCase();
+          document.getElementById("userAvatar").src =
+            `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(fullName)}`;
+        }
+      });
+      function logout() {
+        netlifyIdentity.logout();
+      }
+      netlifyIdentity.on(
+        "logout",
+        () => (window.location.href = "/index.html"),
+      );
+    </script>
+  </body>
+</html>
