@@ -27,7 +27,7 @@
     <nav class="navbar">
       <div class="navbar-brand"><img src="assets/logo1.png" alt="logo"></div>
       <button class="hamburger" onclick="toggleMenu()">☰</button>
-      <ul class="navbar-links">
+      <ul class="navbar-links menu">
         <li><a href="../index.html"><i class="fas fa-home"></i>Home</a></li>
         <!-- <li><a href="#"><i class="fas fa-graduation-cap"></i>Streams</a></li> -->
         <li><a href="Resourses/resource.html"><i class="fas fa-book"></i>Resourses</a></li>
@@ -49,6 +49,12 @@
         </li>
       </ul>
     </nav>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+    </script>
 
     <!-- login.txt popup code are there  -->
 
