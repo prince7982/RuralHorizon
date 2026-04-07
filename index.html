@@ -36,17 +36,17 @@
         <li><a href="ContactUs/contact.html"><i class="fas fa-phone"></i>Contact Us</a></li>
         <!-- <li><a href="#popup" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a></li> -->
         <li id="loginLi"><a href="/Bootstrap/login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a></li>
-        <!-- <button id="logoutButton" class="logoutbtn" style="display: none;">Logout</button> -->
-        <!-- Add this to your Navbar for Dark Mode toggle -->
-        <li><button id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
-        </li>
-
         <li id="logoutLi" style="display: none;">
           <span id="userNameDisplay" style="color: white; margin-right: 10px;"></span>
           <a href="#" id="logoutBtn" style="color: #ff3333; font-weight: bold; display: inline-block;">
           <i class="fas fa-sign-out-alt"></i> Logout
           </a>
         </li>
+        <!-- <button id="logoutButton" class="logoutbtn" style="display: none;">Logout</button> -->
+        <!-- Add this to your Navbar for Dark Mode toggle -->
+        <li><button id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
+        </li>
+
       </ul>
     </nav>
 
@@ -361,10 +361,19 @@
       </div>
     </footer>
 
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script src="script.js"></script>
+
     <script>
+
+      function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('d-none');
+            menu.classList.toggle('active');
+        }
     // 1. Netlify Identity ko initialize karein
     netlifyIdentity.init();
 
