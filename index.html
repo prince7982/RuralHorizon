@@ -33,10 +33,17 @@
         <li><a href="governmentexam/government.html"><i class="fas fa-cogs"></i>Govt Exams and Schemes</a></li>
         <li><a href="ContactUs/contact.html"><i class="fas fa-phone"></i>Contact Us</a></li>
         <!-- <li><a href="#popup" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a></li> -->
-        <li><a href="/Bootstrap/login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+        <li id="loginLi"><a href="/Bootstrap/login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i>Login</a></li>
         <!-- <button id="logoutButton" class="logoutbtn" style="display: none;">Logout</button> -->
         <!-- Add this to your Navbar for Dark Mode toggle -->
         <li><button id="darkModeToggle" onclick="toggleDarkMode()">🌙</button>
+        </li>
+
+        <li id="logoutLi" style="display: none;">
+          <span id="userNameDisplay" style="color: white; margin-right: 10px;"></span>
+          <a href="#" id="logoutBtn" style="color: #ff3333; font-weight: bold; display: inline-block;">
+          <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
         </li>
       </ul>
     </nav>
