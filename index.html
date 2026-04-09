@@ -435,6 +435,8 @@
             e.preventDefault();
             netlifyIdentity.logout();
         });
+
+        updateUI(netlifyIdentity.currentUser());
     });
 </script>
 </body>

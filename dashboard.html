@@ -94,6 +94,24 @@
         width: 100%;
         font-weight: bold;
       }
+      
+      .edit-btn {
+        background: #ff9800;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+      
+      .loading {
+        text-align: center;
+        padding: 20px;
+        font-size: 1.2rem;
+        color: #ff9800;
+      }
     </style>
   </head>
   <body>
@@ -112,55 +130,142 @@
     </div>
 
     <div class="main-content">
-      <div class="profile-card">
-        <div class="profile-img-container">
-          <img id="userAvatar" src="" alt="Profile" />
-        </div>
-        <div class="user-info">
-          <h2>Welcome, <span id="dashName">User</span>!</h2>
-          <div class="info-list">
-            <div class="info-item">
-              <i class="fas fa-envelope"></i> <strong>Email:</strong>
-              <span id="dashEmail"></span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-phone"></i> <strong>Contact:</strong>
-              <span id="dashContact"></span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-id-badge"></i> <strong>Member ID:</strong>
-              <span id="dashID"></span>
-            </div>
-          </div>
+      <div class="profile-card" id="profileCard">
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin"></i> Loading profile...
         </div>
       </div>
     </div>
 
     <script>
       netlifyIdentity.init();
+      
+      // Function to get user data from localStorage or API
+      async function getUserData(user) {
+        return new Promise((resolve) => {
+          // Try to get additional user data from app_metadata or user_metadata
+          const userData = {
+            name: user.user_metadata?.full_name || user.email?.split('@')[0] || "User",
+            email: user.email || "Not Provided",
+            contact: user.user_metadata?.contact_number || 
+                     user.user_metadata?.phone || 
+                     "Not Provided",
+            memberId: user.id?.substring(0, 8).toUpperCase() || "XXXXXX",
+            avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(user.email || user.id)}`
+          };
+          
+          // Try to get saved profile data from localStorage
+          const savedProfile = localStorage.getItem(`profile_${user.id}`);
+          if (savedProfile) {
+            const profile = JSON.parse(savedProfile);
+            userData.name = profile.name || userData.name;
+            userData.contact = profile.contact || userData.contact;
+            if (profile.avatar) userData.avatar = profile.avatar;
+          }
+          
+          resolve(userData);
+        });
+      }
+      
+      // Function to display user profile
+      async function displayUserProfile(user) {
+        const userData = await getUserData(user);
+        
+        const profileHTML = `
+          <div class="profile-img-container">
+            <img id="userAvatar" src="${userData.avatar}" alt="Profile" />
+          </div>
+          <div class="user-info">
+            <h2>Welcome, <span id="dashName">${escapeHtml(userData.name)}</span>!</h2>
+            <div class="info-list">
+              <div class="info-item">
+                <i class="fas fa-envelope"></i> <strong>Email:</strong>
+                <span id="dashEmail">${escapeHtml(userData.email)}</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-phone"></i> <strong>Contact:</strong>
+                <span id="dashContact">${escapeHtml(userData.contact)}</span>
+                <button class="edit-btn" onclick="editContact()" style="margin-left: 10px; padding: 2px 10px; font-size: 0.8rem;">
+                  <i class="fas fa-edit"></i> Edit
+                </button>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-id-badge"></i> <strong>Member ID:</strong>
+                <span id="dashID">${escapeHtml(userData.memberId)}</span>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        document.getElementById("profileCard").innerHTML = profileHTML;
+        
+        // Store user data for later use
+        window.currentUser = user;
+        window.currentUserData = userData;
+      }
+      
+      // Escape HTML to prevent XSS
+      function escapeHtml(str) {
+        if (!str) return '';
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+      
+      // Function to edit contact number
+      function editContact() {
+        const currentContact = document.getElementById("dashContact").innerText;
+        const newContact = prompt("Enter your contact number:", currentContact === "Not Provided" ? "" : currentContact);
+        
+        if (newContact && newContact.trim()) {
+          // Update display
+          document.getElementById("dashContact").innerText = newContact;
+          
+          // Save to localStorage
+          if (window.currentUser) {
+            const savedProfile = localStorage.getItem(`profile_${window.currentUser.id}`) || '{}';
+            const profile = JSON.parse(savedProfile);
+            profile.contact = newContact;
+            localStorage.setItem(`profile_${window.currentUser.id}`, JSON.stringify(profile));
+            
+            // Show success message
+            alert("Contact number updated successfully!");
+          }
+        }
+      }
+      
+      // Make editContact function global
+      window.editContact = editContact;
+      
+      // Handle user authentication
       netlifyIdentity.on("init", (user) => {
         if (!user) {
           window.location.href = "/Bootstrap/login.html";
         } else {
-          const fullName = user.user_metadata.full_name || "Member";
-          document.getElementById("dashName").textContent = fullName;
-          document.getElementById("dashEmail").textContent = user.email;
-          document.getElementById("dashContact").textContent =
-            user.user_metadata.contact_number || "Not Provided";
-          document.getElementById("dashID").textContent = user.id
-            .substring(0, 8)
-            .toUpperCase();
-          document.getElementById("userAvatar").src =
-            `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(fullName)}`;
+          displayUserProfile(user);
         }
       });
+      
+      // Also handle case where user is already logged in when page loads
+      const currentUser = netlifyIdentity.currentUser();
+      if (currentUser) {
+        displayUserProfile(currentUser);
+      } else {
+        netlifyIdentity.on("login", (user) => {
+          displayUserProfile(user);
+        });
+      }
+      
       function logout() {
         netlifyIdentity.logout();
       }
-      netlifyIdentity.on(
-        "logout",
-        () => (window.location.href = "/index.html"),
-      );
+      
+      netlifyIdentity.on("logout", () => {
+        window.location.href = "/index.html";
+      });
     </script>
   </body>
 </html>
