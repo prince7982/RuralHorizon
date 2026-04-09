@@ -8,12 +8,11 @@
   <style>
     @import url('../navbar.css');
     @import url('./login.css');
-    /* @import url('/Bootstrap/login.css'); */
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
     .hidden { display: none; }
     
     /* Google Button Styling */
-    .google-btn {
+    .auth-google-btn {
       background: white;
       color: #444;
       border: 1px solid #ddd;
@@ -29,8 +28,8 @@
       margin-top: 10px;
       transition: background 0.3s;
     }
-    .google-btn:hover { background: #f1f1f1; }
-    .divider { text-align: center; margin: 15px 0; color: #888; font-size: 0.9rem; }
+    .auth-google-btn:hover { background: #f1f1f1; }
+    .auth-divider { text-align: center; margin: 15px 0; color: #888; font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -41,56 +40,76 @@
 
 <div id="navbar-container"></div> <!-- Navbar will be loaded here -->
 
-<div class="modal-container" id="modalContainer">
-  <div class="modal-box">
-    <div class="left-panel">
-      <img src="../assets/logo2.png" alt="Logo" class="logo">
-      <p>By signing up, you can avail of lots of benefits:</p>
-          <ul>
-            <li>Career guidance after 10th and 12th.</li>
-            <li>Govenment exams and schemes.</li>
-            <li>Quizzes for Brushup your Knowledge.</li>
-            <li>Find top universities/colleges.</li>
-            <li>Connect with expert instructors.</li>
-          </ul>
+<!-- ✅ UNIQUE WRAPPER -->
+<div class="student-auth">
+  <div class="auth-container">
+
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <img src="../assets/logo2.png" class="auth-logo" />
+
+      <p class="auth-desc">
+        By signing up, you can avail of lots of benefits:
+      </p>
+
+      <ul class="auth-list">
+        <li>Career guidance after 10th and 12th.</li>
+        <li>Government exams and schemes.</li>
+        <li>Quizzes for Brushup your Knowledge.</li>
+        <li>Find top universities/colleges.</li>
+        <li>Connect with expert instructors.</li>
+      </ul>
     </div>
-    <div class="right-panel">
-      <h2 id="formTitle">Sign In</h2>
+
+    <!-- RIGHT PANEL -->
+    <div class="auth-right">
+      <h2 id="authTitle">Sign In</h2>
+
       <form id="authForm">
-        <div id="signupFields" class="hidden">
-          <input type="text" id="fullName" placeholder="Enter Full Name">
-          <input type="tel" id="contact" placeholder="Enter Contact Number">
+
+        <div id="authExtraFields" class="hidden">
+          <input type="text" id="authName" placeholder="Enter Full Name">
+          <input type="tel" id="authPhone" placeholder="Enter Contact Number">
         </div>
-        <input type="email" id="email" placeholder="Enter Your Email" required>
-        <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Enter Your Password" required>
-          <!-- <span class="toggle-password" onclick="togglePassword('password',this)"><i class="fas fa-eye eye-icon"></i></span> -->
-           <i class="fas fa-eye eye-icon toggle-password" onclick="togglePassword('password', this)"></i>
+
+        <input type="email" id="authEmail" placeholder="Enter Your Email" required>
+
+        <div class="auth-input-group">
+          <input type="password" id="authPassword" placeholder="Enter Your Password" required>
+          <i class="fas fa-eye" onclick="togglePassword('authPassword', this)"></i>
         </div>
-        <div id="confirmPasswordField" class="password-wrapper hidden">
-          <input type="password" id="confirmPassword" placeholder="Enter Confirm Password">
-          <!-- <span class="toggle-password" onclick="togglePassword('confirmPassword',this)"><i class="fas fa-eye eye-icon"></i></span> -->
-           <i class="fas fa-eye eye-icon toggle-password" onclick="togglePassword('confirmPassword', this)"></i>
+
+        <div id="authConfirmBox" class="auth-input-group hidden">
+          <input type="password" id="authConfirmPassword" placeholder="Enter Confirm Password">
+          <i class="fas fa-eye" onclick="togglePassword('authConfirmPassword', this)"></i>
         </div>
-        <button type="submit" id="submitButton">Sign In</button>
+
+        <button type="submit" id="authBtn">Sign In</button>
+
       </form>
 
-      <div class="divider">OR</div>
-      <button type="button" class="google-btn" id="googleLoginBtn">
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="Google Logo">
+      <div class="auth-divider">OR</div>
+
+      <button class="auth-google-btn" id="authGoogleBtn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
         Continue with Google
       </button>
 
-      <p id="toggleText">Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a></p>
+      <p id="authToggleText">
+        Don't have an account? 
+        <span onclick="toggleForm()">Sign up</span>
+      </p>
+
     </div>
+
   </div>
 </div>
+<!-- END student-auth -->
 
-
+<div id="footer-container"></div> <!-- Footer will be loaded here -->
 <script src="../navbar.js" defer></script>
 <script src="./login.js"></script>
 <!-- <script src="/Bootstrap/login.js"></script> -->
 
-<div id="footer-container"></div> <!-- Footer will be loaded here -->
 </body>
 </html>

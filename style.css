@@ -248,6 +248,21 @@
   .slider-btn3:hover{
     background: #2826a0;
   }
+  .slider-btn4{
+    background: #444389;
+    padding: 0.6rem 1.6rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    transition: 0.2s ease;
+    cursor: pointer;
+  }
+  .slider-btn4:hover{
+    background: #2826a0;
+  }
   
   /* Dots for Slider */
   .slider-controls {

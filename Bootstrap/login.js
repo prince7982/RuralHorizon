@@ -1,98 +1,81 @@
-// Netlify Identity Initialize
 netlifyIdentity.init();
 
-// Form toggle logic (Sign In vs Sign Up)
+// Toggle Form
 function toggleForm() {
-    const mode = document.getElementById('formTitle');
-    const signupFields = document.getElementById('signupFields');
-    const confirmPasswordField = document.getElementById('confirmPasswordField');
-    const toggleText = document.getElementById('toggleText');
-    const button = document.getElementById('submitButton');
+    const title = document.getElementById('authTitle');
+    const extra = document.getElementById('authExtraFields');
+    const confirm = document.getElementById('authConfirmBox');
+    const btn = document.getElementById('authBtn');
+    const toggleText = document.getElementById('authToggleText');
 
-    if (mode.textContent === 'Sign In') {
-        mode.textContent = 'Sign Up';
-        signupFields.classList.remove('hidden');
-        confirmPasswordField.classList.remove('hidden');
-        toggleText.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Sign in</a>";
-        button.textContent = 'Register';
+    if (title.textContent === "Sign In") {
+        title.textContent = "Sign Up";
+        extra.classList.remove("hidden");
+        confirm.classList.remove("hidden");
+        btn.textContent = "Register";
+
+        toggleText.innerHTML = `Already have an account? 
+        <span onclick="toggleForm()">Sign in</span>`;
     } else {
-        mode.textContent = 'Sign In';
-        signupFields.classList.add('hidden');
-        confirmPasswordField.classList.add('hidden');
-        toggleText.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Sign up</a>";
-        button.textContent = 'Sign In';
+        title.textContent = "Sign In";
+        extra.classList.add("hidden");
+        confirm.classList.add("hidden");
+        btn.textContent = "Sign In";
+
+        toggleText.innerHTML = `Don't have an account? 
+        <span onclick="toggleForm()">Sign up</span>`;
     }
 }
 
-// Password visibility toggle
-function togglePassword(fieldId) {
-    const field = document.getElementById(fieldId);
-    field.type = field.type === 'password' ? 'text' : 'password';
+// Password toggle
+function togglePassword(id, icon) {
+    let field = document.getElementById(id);
+
+    if (field.type === "password") {
+        field.type = "text";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        field.type = "password";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
 }
 
-// Google Login Trigger
-document.getElementById('googleLoginBtn')?.addEventListener('click', () => {
-    netlifyIdentity.open('login'); 
+// Google Login
+document.getElementById("authGoogleBtn").addEventListener("click", () => {
+    netlifyIdentity.open("login");
 });
 
-// Form Submit Logic
-document.getElementById('authForm').addEventListener('submit', function(e) {
+// Submit
+document.getElementById("authForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    
-    const mode = document.getElementById('formTitle').textContent;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
 
-    if (mode === 'Sign Up') {
-        const fullName = document.getElementById('fullName').value;
-        const contact = document.getElementById('contact').value;
-        const confirmPass = document.getElementById('confirmPassword').value;
+    const mode = document.getElementById("authTitle").textContent;
+    const email = document.getElementById("authEmail").value;
+    const password = document.getElementById("authPassword").value;
 
-        if (password !== confirmPass) {
+    if (mode === "Sign Up") {
+        const name = document.getElementById("authName").value;
+        const phone = document.getElementById("authPhone").value;
+        const confirm = document.getElementById("authConfirmPassword").value;
+
+        if (password !== confirm) {
             alert("Passwords do not match!");
             return;
         }
 
-        // Registration Logic
-        netlifyIdentity.gotrue.signup(email, password, { 
-            full_name: fullName, 
-            user_metadata: { 
-                contact_number: contact,
-                full_name: fullName 
-            } 
-        }).then(
-            (response) => {
-                alert("Registration Successful! Please check your email to confirm your account.");
-                toggleForm();
-            },
-            (error) => alert("Signup Error: " + error.message)
-        );
+        netlifyIdentity.gotrue.signup(email, password, {
+            full_name: name,
+            user_metadata: { phone }
+        }).then(() => {
+            alert("Check email to confirm!");
+            toggleForm();
+        }).catch(err => alert(err.message));
 
     } else {
-        // Login Logic with Dashboard Redirect
-        netlifyIdentity.gotrue.login(email, password, true).then(
-            (user) => {
-                alert("Login successful!");
-                // Yahan humne redirect change kar diya hai
-                window.location.href = "/dashboard.html"; 
-            },
-            (err) => alert("Login failed: " + err.message)   
-        );
+        netlifyIdentity.gotrue.login(email, password, true)
+        .then(() => {
+            window.location.href = "/dashboard.html";
+        })
+        .catch(err => alert(err.message));
     }
 });
-
-
-
-// ------------------open close eye icon-----------------
-  function togglePassword(fieldId, icon) {
-        let field = document.getElementById(fieldId);
-        if (field.type === "password") {
-            field.type = "text";
-            icon.classList.remove("fa-eye");
-            icon.classList.add("fa-eye-slash");
-        } else {
-            field.type = "password";
-            icon.classList.remove("fa-eye-slash");
-            icon.classList.add("fa-eye");
-        }
-    }
