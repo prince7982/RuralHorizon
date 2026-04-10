@@ -150,6 +150,11 @@ body {
     flex-direction: column;
   }
 
+
+  .student-auth .auth-right {
+  padding: 50px 10px;
+}
+
   .student-auth .auth-left {
     display: none;
   }
