@@ -10,9 +10,8 @@ exports.handler = async (event) => {
         "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: "llama3-70b-8192",
+        model: "llama-3.1-8b-instant", // ✅ NEW WORKING MODEL
         messages: [
-          { role: "system", content: "You are a helpful AI assistant." },
           { role: "user", content: message }
         ]
       })
@@ -20,11 +19,21 @@ exports.handler = async (event) => {
 
     const data = await response.json();
 
-    console.log("GROQ DATA:", JSON.stringify(data));
+    console.log("GROQ FINAL:", JSON.stringify(data));
 
-    let reply =
-      data?.choices?.[0]?.message?.content ||
-      "⚠️ No response from AI";
+    let reply = "";
+
+    if (data?.choices?.length > 0) {
+      reply = data.choices[0].message.content;
+    }
+
+    if (!reply && data?.error) {
+      reply = "❌ API Error: " + data.error.message;
+    }
+
+    if (!reply) {
+      reply = "⚠️ No response from AI.";
+    }
 
     return {
       statusCode: 200,
