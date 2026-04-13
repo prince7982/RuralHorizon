@@ -150,9 +150,12 @@ async function sendMessage(){
 
   addMessage('Typing...','bot');
 
-  const res = await fetch('/.netlify/functions/chat',{
-    method:'POST',
-    body: JSON.stringify({message:text})
+  const res = await fetch('/.netlify/functions/chat', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ message: text })
   });
 
   const data = await res.json();
