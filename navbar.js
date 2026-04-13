@@ -151,3 +151,48 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+
+//------------------------ ChatBot JS ------------------------------
+const toggle = document.getElementById('chatbot-toggle');
+const container = document.getElementById('chatbot-container');
+const input = document.getElementById('chat-input');
+const chatBody = document.getElementById('chat-body');
+
+toggle.onclick = ()=>{
+  container.style.display =
+    container.style.display === 'flex' ? 'none' : 'flex';
+};
+
+function addMessage(text, sender){
+  const msg = document.createElement('div');
+  msg.className = 'message ' + sender;
+  msg.innerText = text;
+  chatBody.appendChild(msg);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+async function sendMessage(){
+  const text = input.value.trim();
+  if(!text) return;
+
+  addMessage(text,'user');
+  input.value = '';
+
+  addMessage('Typing...','bot');
+
+  const res = await fetch('/.netlify/functions/chat',{
+    method:'POST',
+    body: JSON.stringify({message:text})
+  });
+
+  const data = await res.json();
+
+  chatBody.lastChild.remove();
+  addMessage(data.reply,'bot');
+}
+
+input.addEventListener('keypress', (e)=>{
+  if(e.key === 'Enter') sendMessage();
+}); 
