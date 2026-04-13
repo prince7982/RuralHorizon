@@ -150,18 +150,24 @@ async function sendMessage(){
 
   addMessage('Typing...','bot');
 
-  const res = await fetch('/.netlify/functions/chat', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ message: text })
-  });
+  try {
+    const res = await fetch('/.netlify/functions/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: text })
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  chatBody.lastChild.remove();
-  addMessage(data.reply,'bot');
+    chatBody.lastChild.remove();
+    addMessage(data.reply || "⚠️ No reply from server",'bot');
+
+  } catch (error) {
+    chatBody.lastChild.remove();
+    addMessage("❌ Network error. Try again.", 'bot');
+  }
 }
 
 input.addEventListener('keypress', (e)=>{

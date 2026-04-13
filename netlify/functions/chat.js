@@ -1,7 +1,6 @@
 // gemini version 
 
 exports.handler = async function (event) {
-  // Allow only POST
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -10,7 +9,6 @@ exports.handler = async function (event) {
   }
 
   try {
-    // Parse user message
     const { message } = JSON.parse(event.body || "{}");
 
     if (!message) {
@@ -20,9 +18,8 @@ exports.handler = async function (event) {
       };
     }
 
-    // Gemini API request
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: {
@@ -31,7 +28,6 @@ exports.handler = async function (event) {
         body: JSON.stringify({
           contents: [
             {
-              role: "user",
               parts: [{ text: message }],
             },
           ],
@@ -41,29 +37,19 @@ exports.handler = async function (event) {
 
     const data = await response.json();
 
-    // Debug log (check Netlify logs if issue)
-    console.log("Gemini Full Response:", JSON.stringify(data));
+    console.log("Gemini Response:", JSON.stringify(data));
 
     let reply = "";
 
-    // ✅ Extract response safely
     if (
       data.candidates &&
       data.candidates.length > 0 &&
-      data.candidates[0].content &&
-      data.candidates[0].content.parts &&
-      data.candidates[0].content.parts.length > 0
+      data.candidates[0].content?.parts?.length > 0
     ) {
       reply = data.candidates[0].content.parts[0].text;
-    }
-
-    // ❌ Handle API errors
-    else if (data.error) {
+    } else if (data.error) {
       reply = "❌ API Error: " + data.error.message;
-    }
-
-    // ⚠️ Empty fallback
-    else {
+    } else {
       reply = "⚠️ No response from AI. Try again.";
     }
 
@@ -82,7 +68,6 @@ exports.handler = async function (event) {
     };
   }
 };
-
 
 // --------------------- Chatgpt chatbot --------------------------------------
 
