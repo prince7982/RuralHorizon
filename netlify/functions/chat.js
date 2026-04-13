@@ -1,6 +1,8 @@
 exports.handler = async (event) => {
   try {
-    const { message } = JSON.parse(event.body);
+    // ✅ handle empty body safely
+    const body = event.body ? JSON.parse(event.body) : {};
+    const message = body.message || "Hello";
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
