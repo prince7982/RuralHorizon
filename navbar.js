@@ -66,7 +66,11 @@ function addLoaderToNavbarLinks() {
 
 // Load navbar and footer on all pages
 document.addEventListener("DOMContentLoaded", function () {
-  loadComponent("navbar.html", "navbar-container", addLoaderToNavbarLinks); // Call loader function after navbar loads
+  // loadComponent("navbar.html", "navbar-container", addLoaderToNavbarLinks); // Call loader function after navbar loads
+  loadComponent("navbar.html", "navbar-container", () => {
+  addLoaderToNavbarLinks();
+  initChatbot(); // ✅ THIS FIXES EVERYTHING
+});
   loadComponent("footer.html", "footer-container");
 });
 
@@ -155,53 +159,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 //------------------------ ChatBot JS ------------------------------
-const toggle = document.getElementById('chatbot-toggle');
-const container = document.getElementById('chatbot-container');
-const input = document.getElementById('chat-input');
-const chatBody = document.getElementById('chat-body');
+function initChatbot() {
+  const toggle = document.getElementById('chatbot-toggle');
+  const container = document.getElementById('chatbot-container');
+  const input = document.getElementById('chat-input');
+  const chatBody = document.getElementById('chat-body');
 
-toggle.onclick = ()=>{
-  container.style.display =
-    container.style.display === 'flex' ? 'none' : 'flex';
-};
+  if (!toggle || !input) return; // 🔥 prevents crash
 
-function addMessage(text, sender){
-  const msg = document.createElement('div');
-  msg.className = 'message ' + sender;
-  msg.innerText = text;
-  chatBody.appendChild(msg);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
+  toggle.onclick = () => {
+    container.style.display =
+      container.style.display === 'flex' ? 'none' : 'flex';
+  };
 
-async function sendMessage(){
-  const text = input.value.trim();
-  if(!text) return;
-
-  addMessage(text,'user');
-  input.value = '';
-
-  addMessage('Typing...','bot');
-
-  try {
-    const res = await fetch('/.netlify/functions/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: text })
-    });
-
-    const data = await res.json();
-
-    chatBody.lastChild.remove();
-    addMessage(data.reply || "⚠️ No reply from server",'bot');
-
-  } catch (error) {
-    chatBody.lastChild.remove();
-    addMessage("❌ Network error. Try again.", 'bot');
+  function addMessage(text, sender){
+    const msg = document.createElement('div');
+    msg.className = 'message ' + sender;
+    msg.innerText = text;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
   }
-}
 
-input.addEventListener('keypress', (e)=>{
-  if(e.key === 'Enter') sendMessage();
-}); 
+  async function sendMessage(){
+    const text = input.value.trim();
+    if(!text) return;
+
+    addMessage(text,'user');
+    input.value = '';
+
+    addMessage('Typing...','bot');
+
+    try {
+      const res = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+
+      chatBody.lastChild.remove();
+      addMessage(data.reply || "⚠️ No reply from server",'bot');
+
+    } catch (error) {
+      chatBody.lastChild.remove();
+      addMessage("❌ Network error",'bot');
+    }
+  }
+
+  input.addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter') sendMessage();
+  });
+
+  // button click fix
+  window.sendMessage = sendMessage;
+}
