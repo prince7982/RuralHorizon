@@ -5,7 +5,7 @@ exports.handler = async function(event) {
     const { message } = JSON.parse(event.body);
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: {
@@ -14,32 +14,42 @@ exports.handler = async function(event) {
         body: JSON.stringify({
           contents: [
             {
+              role: "user",
               parts: [
-                { text: "You are a helpful assistant. " + message }
+                {
+                  text: message
+                }
               ]
             }
-          ]
+          ],
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 200
+          }
         })
       }
     );
 
     const data = await response.json();
 
-    console.log("FULL DATA:", data);
+    console.log("FINAL GEMINI DATA:", JSON.stringify(data, null, 2));
 
-    // 🔥 Improved extraction
     let reply = "";
 
-    if (data.candidates && data.candidates.length > 0) {
-      const parts = data.candidates[0]?.content?.parts;
-      if (parts && parts.length > 0) {
-        reply = parts.map(p => p.text || "").join(" ");
-      }
+    if (
+      data &&
+      data.candidates &&
+      data.candidates.length > 0 &&
+      data.candidates[0].content &&
+      data.candidates[0].content.parts
+    ) {
+      reply = data.candidates[0].content.parts
+        .map(part => part.text)
+        .join(" ");
     }
 
-    // fallback if empty
-    if (!reply || reply.trim() === "") {
-      reply = "AI is not responding properly. Please try again.";
+    if (!reply) {
+      reply = "⚠️ AI not responding. Please try again.";
     }
 
     return {
