@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 exports.handler = async function(event) {
   const { message } = JSON.parse(event.body);
 
@@ -24,7 +22,6 @@ exports.handler = async function(event) {
     })
   };
 };
-
 
 
 //--------------------- Gemini versions -----------------------------

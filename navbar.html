@@ -13,19 +13,6 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-
-    <!-- Chatbot -->
-<div id="chatbot-toggle">💬</div>
-
-<div id="chatbot-container">
-  <div class="chat-header">AI Assistant</div>
-  <div class="chat-body" id="chat-body"></div>
-  <div class="chat-footer">
-    <input id="chat-input" placeholder="Ask anything..." />
-    <button onclick="sendMessage()">Send</button>
-  </div>
-</div>
-
     <!-- loader -->
 
     <div id="loader" class="loader">
@@ -59,6 +46,18 @@
       </li>
     </ul>
   </nav>
+
+      <!-- Chatbot -->
+<div id="chatbot-toggle">💬</div>
+
+<div id="chatbot-container">
+  <div class="chat-header">AI Assistant</div>
+  <div class="chat-body" id="chat-body"></div>
+  <div class="chat-footer">
+    <input id="chat-input" placeholder="Ask anything..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
 
   <script>
         function toggleMenu() {
