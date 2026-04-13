@@ -1,6 +1,5 @@
 exports.handler = async (event) => {
   try {
-    // ✅ handle empty body safely
     const body = event.body ? JSON.parse(event.body) : {};
     const message = body.message || "Hello";
 
@@ -12,28 +11,50 @@ exports.handler = async (event) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: message }] }],
+          contents: [
+            {
+              parts: [{ text: message }],
+            },
+          ],
         }),
       }
     );
 
     const data = await response.json();
 
-    console.log("RESULT:", JSON.stringify(data));
+    console.log("FULL DATA:", JSON.stringify(data));
 
-    let reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "⚠️ No reply from AI";
+    let reply = "";
+
+    // ✅ Try multiple formats (handles all Gemini changes)
+    if (data?.candidates?.length > 0) {
+      const parts = data.candidates[0]?.content?.parts;
+
+      if (parts && parts.length > 0) {
+        reply = parts.map(p => p.text || "").join(" ");
+      }
+    }
+
+    // ❌ API error
+    if (!reply && data?.error) {
+      reply = "❌ API Error: " + data.error.message;
+    }
+
+    // ⚠️ fallback
+    if (!reply) {
+      reply = "⚠️ AI did not return text. Check logs.";
+    }
 
     return {
       statusCode: 200,
       body: JSON.stringify({ reply }),
     };
+
   } catch (err) {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        reply: "❌ Error: " + err.message,
+        reply: "❌ Server error: " + err.message,
       }),
     };
   }
