@@ -14,8 +14,9 @@ exports.handler = async function(event) {
         body: JSON.stringify({
           contents: [
             {
-              role: "user",
-              parts: [{ text: message }]
+              parts: [
+                { text: "You are a helpful assistant. " + message }
+              ]
             }
           ]
         })
@@ -24,13 +25,21 @@ exports.handler = async function(event) {
 
     const data = await response.json();
 
-    console.log("Gemini FULL Response:", JSON.stringify(data, null, 2));
+    console.log("FULL DATA:", data);
 
-    let reply = "Sorry, I couldn't understand that.";
+    // 🔥 Improved extraction
+    let reply = "";
 
     if (data.candidates && data.candidates.length > 0) {
-      const parts = data.candidates[0].content.parts;
-      reply = parts.map(p => p.text).join(" ");
+      const parts = data.candidates[0]?.content?.parts;
+      if (parts && parts.length > 0) {
+        reply = parts.map(p => p.text || "").join(" ");
+      }
+    }
+
+    // fallback if empty
+    if (!reply || reply.trim() === "") {
+      reply = "AI is not responding properly. Please try again.";
     }
 
     return {
@@ -39,12 +48,12 @@ exports.handler = async function(event) {
     };
 
   } catch (error) {
-    console.log("Error:", error);
+    console.log("ERROR:", error);
 
     return {
       statusCode: 500,
       body: JSON.stringify({
-        reply: "Error connecting to AI"
+        reply: "Server error. Try again later."
       })
     };
   }
