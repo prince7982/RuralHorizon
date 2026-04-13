@@ -1,6 +1,6 @@
 // gemini version 
 
-exports.handler = async function(event) {
+exports.handler = async function (event) {
   try {
     const { message } = JSON.parse(event.body);
 
@@ -9,41 +9,48 @@ exports.handler = async function(event) {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           contents: [
             {
-              parts: [{ text: message }]
-            }
-          ]
-        })
+              role: "user",
+              parts: [{ text: message }],
+            },
+          ],
+        }),
       }
     );
 
     const data = await response.json();
+    console.log("FULL RESPONSE:", JSON.stringify(data));
 
-    console.log("Gemini Data:", data);
+    let reply = "⚠️ No response from AI.";
 
-    let reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!reply) {
-      reply = "⚠️ No response from AI. Check API setup.";
+    if (
+      data.candidates &&
+      data.candidates.length > 0 &&
+      data.candidates[0].content &&
+      data.candidates[0].content.parts &&
+      data.candidates[0].content.parts.length > 0
+    ) {
+      reply = data.candidates[0].content.parts[0].text;
+    } else if (data.error) {
+      reply = "❌ API Error: " + data.error.message;
     }
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ reply })
+      body: JSON.stringify({ reply }),
     };
-
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Server Error:", error);
 
     return {
       statusCode: 500,
       body: JSON.stringify({
-        reply: "Server error"
-      })
+        reply: "❌ Server error: " + error.message,
+      }),
     };
   }
 };
