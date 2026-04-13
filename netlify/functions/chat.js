@@ -5,7 +5,7 @@ exports.handler = async function(event) {
     const { message } = JSON.parse(event.body);
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: {
@@ -14,6 +14,7 @@ exports.handler = async function(event) {
         body: JSON.stringify({
           contents: [
             {
+              role: "user",
               parts: [{ text: message }]
             }
           ]
@@ -23,11 +24,14 @@ exports.handler = async function(event) {
 
     const data = await response.json();
 
-    console.log("Gemini Response:", data);
+    console.log("Gemini FULL Response:", JSON.stringify(data, null, 2));
 
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "Sorry, I couldn't understand that.";
+    let reply = "Sorry, I couldn't understand that.";
+
+    if (data.candidates && data.candidates.length > 0) {
+      const parts = data.candidates[0].content.parts;
+      reply = parts.map(p => p.text).join(" ");
+    }
 
     return {
       statusCode: 200,
