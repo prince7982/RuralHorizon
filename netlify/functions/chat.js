@@ -3,44 +3,28 @@ exports.handler = async (event) => {
     const body = event.body ? JSON.parse(event.body) : {};
     const message = body.message || "Hello";
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: message }],
-            },
-          ],
-        }),
-      }
-    );
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "llama3-8b-8192",
+        messages: [
+          { role: "system", content: "You are a helpful AI assistant." },
+          { role: "user", content: message }
+        ]
+      })
+    });
 
     const data = await response.json();
 
-    console.log("FINAL DATA:", JSON.stringify(data));
+    console.log("GROQ DATA:", JSON.stringify(data));
 
-    let reply = "";
-
-    if (data?.candidates?.length > 0) {
-      const parts = data.candidates[0]?.content?.parts;
-      if (parts?.length > 0) {
-        reply = parts.map(p => p.text || "").join(" ");
-      }
-    }
-
-    if (!reply && data?.error) {
-      reply = "❌ API Error: " + data.error.message;
-    }
-
-    if (!reply) {
-      reply = "⚠️ No response from AI.";
-    }
+    let reply =
+      data?.choices?.[0]?.message?.content ||
+      "⚠️ No response from AI";
 
     return {
       statusCode: 200,
