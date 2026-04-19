@@ -68,19 +68,30 @@
       <form id="authForm">
 
         <div id="authExtraFields" class="hidden">
-          <input type="text" id="authName" placeholder="Enter Full Name">
-          <input type="tel" id="authPhone" placeholder="Enter Contact Number">
+          <input type="text" id="authName" minlength="5" pattern="[A-Za-z]{2,}(\s[A-Za-z]{2,})?" 
+          title="Enter at least 5 characters, with an optional space between first and last name." 
+          placeholder="Enter Full Name">
+
+          <input type="tel" id="authPhone" pattern="[6-9]\d{9}" minlength="10" maxlength="10" 
+          title="Enter a valid 10-digit mobile number starting with 6, 7, 8, or 9."
+           placeholder="Enter Contact Number" required>
         </div>
 
         <input type="email" id="authEmail" placeholder="Enter Your Email" required>
 
         <div class="auth-input-group">
-          <input type="password" id="authPassword" placeholder="Enter Your Password" required>
+          <input type="password" id="authPassword" minlength="8" maxlength="20" 
+          pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+          title="Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character."  
+          placeholder="Enter Your Password" required>
           <i class="fas fa-eye" onclick="togglePassword('authPassword', this)"></i>
         </div>
 
         <div id="authConfirmBox" class="auth-input-group hidden">
-          <input type="password" id="authConfirmPassword" placeholder="Enter Confirm Password">
+          <input type="password" minlength="8" maxlength="20" 
+          pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" 
+          title="Confirm password must match the above password requirements." 
+          id="authConfirmPassword" placeholder="Enter Confirm Password">
           <i class="fas fa-eye" onclick="togglePassword('authConfirmPassword', this)"></i>
         </div>
 
