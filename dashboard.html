@@ -241,24 +241,35 @@
       // Make editContact function global
       window.editContact = editContact;
       
-      // Handle user authentication
+      let userLoaded = false;
+
+      // ✅ MAIN AUTH CHECK
       netlifyIdentity.on("init", (user) => {
+      userLoaded = true;
+
         if (!user) {
+          console.log("❌ No user → redirect");
           window.location.href = "/Bootstrap/login.html";
         } else {
+          console.log("✅ User found");
           displayUserProfile(user);
         }
       });
-      
-      // Also handle case where user is already logged in when page loads
-      const currentUser = netlifyIdentity.currentUser();
-      if (currentUser) {
-        displayUserProfile(currentUser);
-      } else {
-        netlifyIdentity.on("login", (user) => {
+
+      // ✅ FIX Google delay issue
+      setTimeout(() => {
+        if (!userLoaded) {
+        const user = netlifyIdentity.currentUser();
+
+        if (user) {
+          console.log("✅ Fallback user");
           displayUserProfile(user);
-        });
+        } else {
+          console.log("❌ Still no user → redirect");
+          window.location.href = "/Bootstrap/login.html";
+        }
       }
+      }, 1500);
       
       function logout() {
         netlifyIdentity.logout();
