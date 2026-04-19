@@ -241,35 +241,40 @@
       // Make editContact function global
       window.editContact = editContact;
       
-      let userLoaded = false;
+      let hasUser = false;
 
-      // ✅ MAIN AUTH CHECK
-      netlifyIdentity.on("init", (user) => {
-      userLoaded = true;
+// ✅ When Netlify is ready
+netlifyIdentity.on("init", (user) => {
+  if (user) {
+    hasUser = true;
+    console.log("✅ User found (init)");
+    displayUserProfile(user);
+  } else {
+    console.log("⏳ Waiting for user...");
+  }
+});
 
-        if (!user) {
-          console.log("❌ No user → redirect");
-          window.location.href = "/Bootstrap/login.html";
-        } else {
-          console.log("✅ User found");
-          displayUserProfile(user);
-        }
-      });
+// ✅ When login happens (important for Google)
+netlifyIdentity.on("login", (user) => {
+  hasUser = true;
+  console.log("✅ User found (login event)");
+  displayUserProfile(user);
+});
 
-      // ✅ FIX Google delay issue
-      setTimeout(() => {
-        if (!userLoaded) {
-        const user = netlifyIdentity.currentUser();
+// ✅ FINAL DECISION AFTER DELAY
+setTimeout(() => {
+  if (!hasUser) {
+    const user = netlifyIdentity.currentUser();
 
-        if (user) {
-          console.log("✅ Fallback user");
-          displayUserProfile(user);
-        } else {
-          console.log("❌ Still no user → redirect");
-          window.location.href = "/Bootstrap/login.html";
-        }
-      }
-      }, 1500);
+    if (user) {
+      console.log("✅ User found (fallback)");
+      displayUserProfile(user);
+    } else {
+      console.log("❌ No user → redirect");
+      window.location.href = "/Bootstrap/login.html";
+    }
+  }
+}, 2000); // ⬅️ increased delay
       
       function logout() {
         netlifyIdentity.logout();
