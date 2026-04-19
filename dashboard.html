@@ -242,34 +242,23 @@
       window.editContact = editContact;
       
       // Handle user authentication
-      let userReady = false;
-
-// when identity initializes
-netlifyIdentity.on("init", (user) => {
-  if (user) {
-    userReady = true;
-    displayUserProfile(user);
-  }
-});
-
-// when login happens (Google case)
-netlifyIdentity.on("login", (user) => {
-  userReady = true;
-  displayUserProfile(user);
-});
-
-// fallback check (prevents false redirect)
-setTimeout(() => {
-  if (!userReady) {
-    const user = netlifyIdentity.currentUser();
-
-    if (user) {
-      displayUserProfile(user);
-    } else {
-      window.location.href = "/Bootstrap/login.html";
-    }
-  }
-}, 2000);
+      netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.location.href = "/Bootstrap/login.html";
+        } else {
+          displayUserProfile(user);
+        }
+      });
+      
+      // Also handle case where user is already logged in when page loads
+      const currentUser = netlifyIdentity.currentUser();
+      if (currentUser) {
+        displayUserProfile(currentUser);
+      } else {
+        netlifyIdentity.on("login", (user) => {
+          displayUserProfile(user);
+        });
+      }
       
       function logout() {
         netlifyIdentity.logout();

@@ -1,115 +1,81 @@
-// ✅ Initialize Netlify Identity
-if (window.netlifyIdentity) {
-  netlifyIdentity.init();
-}
+netlifyIdentity.init();
 
-// ---------------- TOGGLE SIGN IN / SIGN UP ----------------
+// Toggle Form
 function toggleForm() {
-  const title = document.getElementById('authTitle');
-  const extra = document.getElementById('authExtraFields');
-  const confirm = document.getElementById('authConfirmBox');
-  const btn = document.getElementById('authBtn');
-  const toggleText = document.getElementById('authToggleText');
+    const title = document.getElementById('authTitle');
+    const extra = document.getElementById('authExtraFields');
+    const confirm = document.getElementById('authConfirmBox');
+    const btn = document.getElementById('authBtn');
+    const toggleText = document.getElementById('authToggleText');
 
-  if (title.textContent === "Sign In") {
-    title.textContent = "Sign Up";
-    extra.classList.remove("hidden");
-    confirm.classList.remove("hidden");
-    btn.textContent = "Register";
+    if (title.textContent === "Sign In") {
+        title.textContent = "Sign Up";
+        extra.classList.remove("hidden");
+        confirm.classList.remove("hidden");
+        btn.textContent = "Register";
 
-    toggleText.innerHTML = `Already have an account? 
-      <span onclick="toggleForm()">Sign in</span>`;
-  } else {
-    title.textContent = "Sign In";
-    extra.classList.add("hidden");
-    confirm.classList.add("hidden");
-    btn.textContent = "Sign In";
+        toggleText.innerHTML = `Already have an account? 
+        <span onclick="toggleForm()">Sign in</span>`;
+    } else {
+        title.textContent = "Sign In";
+        extra.classList.add("hidden");
+        confirm.classList.add("hidden");
+        btn.textContent = "Sign In";
 
-    toggleText.innerHTML = `Don't have an account? 
-      <span onclick="toggleForm()">Sign up</span>`;
-  }
-}
-
-// ---------------- PASSWORD TOGGLE ----------------
-function togglePassword(id, icon) {
-  const field = document.getElementById(id);
-
-  if (field.type === "password") {
-    field.type = "text";
-    icon.classList.replace("fa-eye", "fa-eye-slash");
-  } else {
-    field.type = "password";
-    icon.classList.replace("fa-eye-slash", "fa-eye");
-  }
-}
-
-// ---------------- GOOGLE LOGIN ----------------
-document.getElementById("authGoogleBtn")?.addEventListener("click", () => {
-  netlifyIdentity.open("login"); // opens popup (Google etc)
-});
-
-// ---------------- FORM SUBMIT ----------------
-document.getElementById("authForm")?.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const mode = document.getElementById("authTitle").textContent;
-  const email = document.getElementById("authEmail").value;
-  const password = document.getElementById("authPassword").value;
-
-  // -------- SIGN UP --------
-  if (mode === "Sign Up") {
-    const name = document.getElementById("authName").value;
-    const phone = document.getElementById("authPhone").value;
-    const confirm = document.getElementById("authConfirmPassword").value;
-
-    if (password !== confirm) {
-      alert("Passwords do not match!");
-      return;
+        toggleText.innerHTML = `Don't have an account? 
+        <span onclick="toggleForm()">Sign up</span>`;
     }
+}
 
-    netlifyIdentity.gotrue
-      .signup(email, password, {
-        full_name: name,
-        user_metadata: { phone }
-      })
-      .then(() => {
-        alert("✅ Check your email to confirm your account!");
-        toggleForm();
-      })
-      .catch(err => alert(err.message));
+// Password toggle
+function togglePassword(id, icon) {
+    let field = document.getElementById(id);
 
-  } 
-  // -------- LOGIN --------
-  else {
-    netlifyIdentity.gotrue
-      .login(email, password, true)
-      .then(() => {
-        window.location.href = "/dashboard.html";
-      })
-      .catch(err => alert(err.message));
-  }
+    if (field.type === "password") {
+        field.type = "text";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        field.type = "password";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
+}
+
+// Google Login
+document.getElementById("authGoogleBtn").addEventListener("click", () => {
+    netlifyIdentity.open("login");
 });
 
-// ---------------- GLOBAL AUTH HANDLING ----------------
+// Submit
+document.getElementById("authForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-// ✅ Runs for BOTH Google + Email login
-netlifyIdentity.on("login", user => {
-  console.log("✅ Logged in:", user);
-  netlifyIdentity.close();
+    const mode = document.getElementById("authTitle").textContent;
+    const email = document.getElementById("authEmail").value;
+    const password = document.getElementById("authPassword").value;
 
-  // redirect after login
-  window.location.href = "/dashboard.html";
-});
+    if (mode === "Sign Up") {
+        const name = document.getElementById("authName").value;
+        const phone = document.getElementById("authPhone").value;
+        const confirm = document.getElementById("authConfirmPassword").value;
 
-// ✅ If already logged in → skip login page
-netlifyIdentity.on("init", user => {
-  if (user && window.location.pathname.includes("login")) {
-    console.log("✅ Already logged in");
-    window.location.href = "/dashboard.html";
-  }
-});
+        if (password !== confirm) {
+            alert("Passwords do not match!");
+            return;
+        }
 
-// ✅ Optional: logout handler (in case used here)
-netlifyIdentity.on("logout", () => {
-  console.log("User logged out");
+        netlifyIdentity.gotrue.signup(email, password, {
+            full_name: name,
+            user_metadata: { phone }
+        }).then(() => {
+            alert("Check email to confirm!");
+            toggleForm();
+        }).catch(err => alert(err.message));
+
+    } else {
+        netlifyIdentity.gotrue.login(email, password, true)
+        .then(() => {
+            window.location.href = "/dashboard.html";
+        })
+        .catch(err => alert(err.message));
+    }
 });
