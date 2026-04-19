@@ -103,7 +103,7 @@ netlifyIdentity.on("login", user => {
 
 // ✅ If already logged in → skip login page
 netlifyIdentity.on("init", user => {
-  if (user && window.location.pathname.includes("login")) {
+  if (user) {
     console.log("✅ Already logged in");
     window.location.href = "/dashboard.html";
   }
