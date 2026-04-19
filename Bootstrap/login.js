@@ -1,4 +1,4 @@
-netlifyIdentity.init();
+// netlifyIdentity.init();
 
 // Toggle Form
 function toggleForm() {

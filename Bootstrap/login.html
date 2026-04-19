@@ -112,7 +112,58 @@
 <!-- <script src="/Bootstrap/login.js"></script> -->
 
 
+
 <script defer>
+document.addEventListener("DOMContentLoaded", () => {
+
+    netlifyIdentity.init();
+
+    function updateUI(user) {
+        const loginLi = document.getElementById('loginLi');
+        const logoutLi = document.getElementById('logoutLi');
+        const nameDisplay = document.getElementById('userNameDisplay');
+
+        if (user) {
+            loginLi && (loginLi.style.display = "none");
+
+            if (logoutLi) {
+                logoutLi.style.display = "flex";
+                logoutLi.style.alignItems = "center";
+            }
+
+            if (nameDisplay) {
+                nameDisplay.innerHTML = `
+                    <a href="/dashboard.html" style="color:#ff9800;font-weight:bold;">
+                        <i class="fas fa-user-circle"></i> Dashboard
+                    </a>`;
+            }
+        } else {
+            loginLi && (loginLi.style.display = "block");
+            logoutLi && (logoutLi.style.display = "none");
+        }
+    }
+
+    // ✅ IMPORTANT: Attach events BEFORE anything else
+    netlifyIdentity.on("init", user => updateUI(user));
+
+    netlifyIdentity.on("login", user => {
+        netlifyIdentity.close();
+        window.location.href = "/dashboard.html"; // ✅ redirect works for Google
+    });
+
+    netlifyIdentity.on("logout", () => {
+        window.location.href = "/index.html";
+    });
+
+    document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        netlifyIdentity.logout();
+    });
+
+});
+</script>
+
+<!-- <script defer>
 
     // 1. Netlify Identity ko initialize karein
     netlifyIdentity.init();
@@ -178,6 +229,6 @@
 
         updateUI(netlifyIdentity.currentUser());
     });
-</script>
+</script> -->
 </body>
 </html>
