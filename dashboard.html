@@ -123,7 +123,7 @@
       </p>
       <hr style="opacity: 0.3" />
       <p><i class="fas fa-user-circle"></i> Dashboard</p>
-      <p onclick="window.location.href = '/AdmitCard/admitcard.html'">
+      <p onclick="window.location.href = '/Resourses/resource.html'">
         <i class="fas fa-file-alt"></i> Courses
       </p>
       <p><i class="fas fa-poll"></i> My Activity</p>
@@ -244,7 +244,8 @@
       // Handle user authentication
       netlifyIdentity.on("init", (user) => {
         if (!user) {
-          window.location.href = "/Bootstrap/login.html";
+          // window.location.href = "/Bootstrap/login.html";
+          window.location.href = "/index.html";
         } else {
           displayUserProfile(user);
         }
