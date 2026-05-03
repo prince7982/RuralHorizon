@@ -177,7 +177,7 @@ input.addEventListener('keypress', (e)=>{
 
 
 // chatbot animation 
-const text = "Hey I Am Rox AI🤖 Ask Something to me...";
+const text = "HΞY I ΔM RØX ΔI 🤖 ΛSK SΘMΞTHIПG TΘ MΞ...";
   const element = document.getElementById("typewriter");
 
   const colors = [
