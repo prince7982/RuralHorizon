@@ -230,7 +230,7 @@ const text = "HΞY I ΔM RØX ΔI 🤖 ΛSK SΘMΞTHIПG TΘ MΞ...";
   let index = 0;
 
   function typeEffect() {
-    element.innerHTML = "";
+    element.innerHTML = "👋";
     element.style.color =
       colors[Math.floor(Math.random() * colors.length)];
 
