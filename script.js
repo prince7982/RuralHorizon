@@ -173,3 +173,42 @@ async function sendMessage(){
 input.addEventListener('keypress', (e)=>{
   if(e.key === 'Enter') sendMessage();
 });  
+
+
+
+// chatbot animation 
+const text = "Hey I Am Rox AI🤖 Ask Something to me...";
+  const element = document.getElementById("typewriter");
+
+  const colors = [
+    "#ff4d4d",
+    "#00ffcc",
+    "#ffd700",
+    "#ff66ff",
+    "#66a3ff",
+    "#00ff66"
+  ];
+
+  let index = 0;
+
+  function typeEffect() {
+    element.innerHTML = "";
+    element.style.color =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    let i = 0;
+
+    const typing = setInterval(() => {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(typing);
+
+        // Restart animation after delay
+        setTimeout(typeEffect, 1500);
+      }
+    }, 100);
+  }
+
+  typeEffect();
